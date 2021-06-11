@@ -8,14 +8,14 @@ public interface Location {
     /**
      * Method that generates the rooms for the location
      * 
-     * @params none
+     * @param none
      * @return seed
      */
     public int generateRooms();
     /**
      * Method that checks if the player can enter
      * 
-     * @paramas elf
+     * @param elf
      * @return 
      */
     public boolean canEnter(Elf elf);
