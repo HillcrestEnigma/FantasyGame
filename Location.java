@@ -24,7 +24,7 @@ public class Location {
     /**
      * Method that checks if the player can enter
      * 
-     * @paramas elf
+     * @param elf
      * @return 
      */
     public boolean canEnter(Elf elf) {
