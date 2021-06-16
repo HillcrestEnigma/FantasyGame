@@ -38,13 +38,4 @@ public class Room {
         }
         else return false;
     }
-    /**
-     * Allows the elf to exit the room
-     * 
-     * @param elf 
-     * @return 
-     */
-    public boolean exit(Elf elf) {
-        return elf.getHealth() >= 25;
-    }
 }
