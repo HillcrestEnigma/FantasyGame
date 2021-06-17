@@ -5,17 +5,13 @@
  * @author JingKun
  */
 public class Room {
-    private int gold;
-    private boolean radioactive;
+    public Inventory inventory;
     private String name;
-    private int x;
-    private int y;
-    public Room(String name, int x, int y, int gold, boolean radioactive) {
+    public Position pos;
+    public Room(String name, String location, int x, int y) {
         this.name = name;
-        this.x = x;
-        this.y = y;
-        this.gold = gold,
-        this.radioactive = radioactive;
+        this.pos = new Position(location, x, y);
+        this.inventory = new Inventory();
     }
     /**
      * Allows the elf to enter the room and perform actions in it, if it can.
