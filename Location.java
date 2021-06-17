@@ -17,6 +17,7 @@ public class Location {
                 return room;
             }
         }
+        return null;
     }
 
     /**
