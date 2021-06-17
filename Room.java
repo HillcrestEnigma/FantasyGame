@@ -7,10 +7,10 @@
 public class Room {
     public Inventory inventory;
     private String name;
-    public Position pos;
+    public Position position;
     public Room(String name, String location, int x, int y) {
         this.name = name;
-        this.pos = new Position(location, x, y);
+        this.position = new Position(location, x, y);
         this.inventory = new Inventory();
     }
     /**

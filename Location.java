@@ -5,27 +5,18 @@
  * @author JingKun
  */
 public class Location {
-    private String name;
     private List<Room> rooms;
 
-    public Location() {
+    public Location(int seed) {
         rooms = new ArrayList<Room>();
     }
 
-    /**
-     * Method that generates the rooms for the location
-     * 
-     * @params none
-     * @return seed
-     */
-    public int generateRooms() {
-        int seed = 0;
-        for (int i = 0; i < 50; i++) {
-            for (int j = 0; j < 50; j++) {
-                
+    public Room getRoom(int x, int y) {
+        for (Room room:rooms) {
+            if (room.getRoomX() == x && room.getRoomY() == y) {
+                return room;
             }
         }
-        return seed;
     }
 
     /**
