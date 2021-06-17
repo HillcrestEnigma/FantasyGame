@@ -6,9 +6,8 @@
  */
 public class Room {
     public Inventory inventory;
-    private String name;
     public Position position;
-    public Room(String name, String location, int x, int y) {
+    public Room(String location, int x, int y) {
         this.name = name;
         this.position = new Position(location, x, y);
         this.inventory = new Inventory();

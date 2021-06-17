@@ -1,10 +1,6 @@
 import java.util.ArrayList;
 class DarkRoom extends Room {
-    int goldAmt;
     boolean radioactive;
-    Position pos;
-    Inventory inventory;
-    ArrayList<Elf> elves;
 	
     /**
      * Constructs a DarkRoom
@@ -14,14 +10,13 @@ class DarkRoom extends Room {
      * @param goldAmt The amount of the gold.
      * @param radioactive If radioactivity is present
      */
-    public DarkRoom(String name, int x, int y, int goldAmt, boolean radioactive) {
+    public DarkRoom(String name, int x, int y, boolean radioactive) {
         super(name, x, y);
-        this.pos = new Position (name, x, y);
+        this.position = new Position (name, x, y);
 	this.radioactive = radioactive;
 	this.inventory = new Inventory();
         inventory.addItem(new Item("Gold"));
         inventory.setItemQuantity("Gold", goldAmt);
-	elves = new ArrayList<Elf>();
     }
 	
     /**
