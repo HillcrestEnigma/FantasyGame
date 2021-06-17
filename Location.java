@@ -5,7 +5,13 @@
  * @author JingKun
  */
 public class Location {
-    private Room[][] rooms = new Room[50][50];
+    private String name;
+    private List<Room> rooms;
+
+    public Location() {
+        rooms = new ArrayList<Room>();
+    }
+
     /**
      * Method that generates the rooms for the location
      * 
@@ -21,6 +27,7 @@ public class Location {
         }
         return seed;
     }
+
     /**
      * Method that checks if the player can enter
      * 
