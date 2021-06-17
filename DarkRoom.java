@@ -32,12 +32,12 @@ class DarkRoom extends Room {
     public boolean enter(Elf elf) {
         if(elf.getPos().getLocation().equals("Nowhere") 
                 && !pos.getLocation().equals("Entrance")) {
-            elves.add(elf);
             return false;
         }
         else if (elf.getPos().getLocation().equals("Nowhere") 
                 && pos.getLocation().equals("Entrance")) {
             elf.getPos().setLocation("Entrance");
+		elves.add(elf);
             return true;
         }
         else if (Math.abs(elf.getPos().getRoomX() - pos.getRoomX()) < 2
