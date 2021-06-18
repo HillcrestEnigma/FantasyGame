@@ -51,8 +51,8 @@ public class Game {
                 System.out.println("look: Observe the room you are in");
                 System.out.println("move left: Enter the room to the left");
                 System.out.println("move right: Enter the room to the right");
-                System.out.println("move up: Enter the room forward");
-                System.out.println("move down: Enter the room behind");
+                System.out.println("move forward: Enter the room forward");
+                System.out.println("move behind: Enter the room behind");
             } else if (command.equals("exit")) {
                 break;
             } else if (command.equals("look")) {
@@ -63,12 +63,12 @@ public class Game {
             } else if (command.equals("move right")) {
                 System.out.println("Moving...");
                 if (!player.moveRight(location)) System.out.println("You can't enter the room to the right!");
-            } else if (command.equals("move up")) {
+            } else if (command.equals("move forward")) {
                 System.out.println("Moving...");
-                if (!player.moveUp(location)) System.out.println("You can't enter the room forward!");
-            } else if (command.equals("move down")) {
+                if (!player.moveForward(location)) System.out.println("You can't enter the room forward!");
+            } else if (command.equals("move behind")) {
                 System.out.println("Moving...");
-                if (!player.moveUp(location)) System.out.println("You can't enter the room behind!");
+                if (!player.moveBehind(location)) System.out.println("You can't enter the room behind!");
             } else {
                 System.out.println("Wrong command. Type \"help\" to view a list of commands.");
             }

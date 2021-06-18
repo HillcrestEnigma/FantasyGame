@@ -1,8 +1,7 @@
 import java.util.*;
-
 /**
  * This class represents the sole character of the game.
- * 
+ *
  * @version 06-16-2021
  * @author Jing Sun & Paul Lee
  */
@@ -25,12 +24,12 @@ public class Player extends Entity {
             System.out.print("to the right");
             beforePrintFirstDirection = false;
         }
-        if (canMoveUp(location)) {
+        if (canMoveForward(location)) {
             if (!beforePrintFirstDirection) System.out.print(", ");
             System.out.print("forward");
             beforePrintFirstDirection = false;
         }
-        if (canMoveDown(location)) {
+        if (canMoveBehind(location)) {
             if (!beforePrintFirstDirection) System.out.print(", ");
             System.out.print("behind");
             beforePrintFirstDirection = false;

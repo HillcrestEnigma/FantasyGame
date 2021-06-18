@@ -41,24 +41,24 @@ public class Entity {
         } else return false;
     }
 
-    public boolean canMoveUp(Location loc) {
+    public boolean canMoveForward(Location loc) {
         return loc.getRoom(position.getRoomX(), position.getRoomY()-1) != null;
     }
 
-    public boolean moveUp(Location loc) {
-        if (canMoveUp(loc)) {
+    public boolean moveForward(Location loc) {
+        if (canMoveForward(loc)) {
             position.moveUp();
             enterRoom(loc);
             return true;
         } else return false;
     }
 
-    public boolean canMoveDown(Location loc) {
+    public boolean canMoveBehind(Location loc) {
         return loc.getRoom(position.getRoomX(), position.getRoomY()+1) != null;
     }
 
-    public boolean moveDown(Location loc) {
-        if (canMoveDown(loc)) {
+    public boolean moveBehind(Location loc) {
+        if (canMoveBehind(loc)) {
             position.moveDown();
             enterRoom(loc);
             return true;
