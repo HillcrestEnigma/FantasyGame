@@ -76,4 +76,8 @@ public class Player extends Entity {
             }
         } else System.out.println("There is nothing in your inventory. :(");
     }
+    
+    public void printMap(Location location) {
+        location.map(getPosition().getRoomX(), getPosition().getRoomY());
+    }
 }

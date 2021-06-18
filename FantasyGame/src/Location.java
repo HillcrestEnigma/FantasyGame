@@ -56,11 +56,13 @@ public class Location {
         }
         map[0-minY][0-minX] = 'E';
         map[y-minY][x-minX] = 'O';
+        System.out.println("===== Map =====");
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {
                 System.out.print(map[i][j]);
             }
             System.out.println();
         }
+        System.out.println("\nx = Rooms\nO = Your Location\nE = Entrance");
     }
 }
