@@ -36,10 +36,9 @@ public class Game {
         Location location;
 
         System.out.println("Welcome to Fantasy!");
-        System.out.println("Type \"help\" to view a list of commands.\n");
+        System.out.println("Type \"help\" to view a list of commands.");
         while (true) {
             location = getLocationByName(player.getPosition().getLocation());
-            player.look(location);
 
             System.out.print("\n> ");
             command = scanner.nextLine();

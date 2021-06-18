@@ -8,6 +8,7 @@ class Castle extends Location {
         int x = 0;
         int y = 0;
         int direction;
+        addRoom(new DarkRoom(0, 0, rng.nextLong()));
         while (getSize() < 100) {
             direction = rng.nextInt(4);
             if (direction == 0) x++;
@@ -16,5 +17,6 @@ class Castle extends Location {
             else y--;
             addRoom(new DarkRoom(x, y, rng.nextLong()));
         }
+
     }
 }

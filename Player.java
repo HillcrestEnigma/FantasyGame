@@ -16,27 +16,22 @@ public class Player extends Entity {
         System.out.print("\nFrom this room you can enter the room ");
         if (canMoveLeft(location)) {
             System.out.print("to the left");
+            beforePrintFirstDirection = false;
         }
         if (canMoveRight(location)) {
-            if (!beforePrintFirstDirection) {
-                System.out.print(", ");
-                beforePrintFirstDirection = false;
-            }
+            if (!beforePrintFirstDirection) System.out.print(", ");
             System.out.print("to the right");
+            beforePrintFirstDirection = false;
         }
         if (canMoveUp(location)) {
-            if (!beforePrintFirstDirection) {
-                System.out.print(", ");
-                beforePrintFirstDirection = false;
-            }
+            if (!beforePrintFirstDirection) System.out.print(", ");
             System.out.print("forward");
+            beforePrintFirstDirection = false;
         }
         if (canMoveDown(location)) {
-            if (!beforePrintFirstDirection) {
-                System.out.print(", ");
-                beforePrintFirstDirection = false;
-            }
+            if (!beforePrintFirstDirection) System.out.print(", ");
             System.out.print("behind");
+            beforePrintFirstDirection = false;
         }
         System.out.println(".");
     }
