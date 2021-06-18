@@ -80,4 +80,19 @@ public class Player extends Entity {
     public void printMap(Location location) {
         location.map(getPosition().getRoomX(), getPosition().getRoomY());
     }
+    
+    public boolean drinkPotion(int amount) {
+        if (getHealth() == 100) return false;
+        else {
+            int newHealth = getHealth() + amount * 10;
+            if (newHealth > 100) setHealth(100);
+            else setHealth(newHealth);
+            inventory.updateItemQuantity("Potion", -1 * amount);
+            return true;
+        }
+    }
+    
+    public void stockPotion() {
+        inventory.setItemQuantity("Potion", 5);
+    }
 }
