@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random; // https://www.tutorialspoint.com/java/util/java_util_random.htm
 class DarkRoom extends Room {
-    boolean radioactive;
+    private boolean radioactive;
 	
     /**
      * Constructs a DarkRoom
@@ -34,5 +34,9 @@ class DarkRoom extends Room {
 
     public void look() {
         System.out.println("The room is very dark, and you make out only a few details.");
+    }
+
+    public boolean isRadioactive() {
+        return radioactive;
     }
 }

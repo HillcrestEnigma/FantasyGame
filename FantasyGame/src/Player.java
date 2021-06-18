@@ -39,6 +39,19 @@ public class Player extends Entity {
         pickUpItems(location);
     }
 
+    public void enterRoom(Location location) {
+        Room room = getRoom(location);
+        if (room instanceof DarkRoom) {
+            DarkRoom darkRoom = (DarkRoom) room;
+            if (darkRoom.isRadioactive()) {
+                takeDamage(5);
+                System.out.println("You feel the radioactivity in the room. You take 5% health damage. Your new health level is " + getHealth() + "%.\n");
+            }
+        }
+
+        look(location);
+    }
+
     public void pickUpItems(Location location) {
         System.out.print("You find ");
         List<Item> items = getRoom(location).inventory.getItems();
@@ -62,6 +75,5 @@ public class Player extends Entity {
                 System.out.println(item.quantity + " " + item.getName());
             }
         } else System.out.println("There is nothing in your inventory. :(");
-        
     }
 }

@@ -72,6 +72,17 @@ public class Entity {
         return health;
     }
 
+    public boolean setHealth(int health) {
+        if (0 <= health && health <= 100) {
+            this.health = health;
+            return true;
+        } else return false;
+    }
+
+    public boolean takeDamage(int damage) {
+        return setHealth(health - damage);
+    }
+
     public void teleport(String location) {
         position.setLocation(location);
         position.setRoomX(0);
