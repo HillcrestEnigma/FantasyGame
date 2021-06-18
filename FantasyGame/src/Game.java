@@ -50,8 +50,8 @@ public class Game {
                 System.out.println("exit: Exit the game");
                 System.out.println("look: Observe the room you are in");
                 System.out.println("map: Displays a map of the castle. Your"
-                        + " location is marked with O, and rooms are marked"
-                        + " with X");
+                        + " location is marked with O, rooms are marked"
+                        + " with X, and the entrance is marked with E");
                 System.out.println("status: Check your health, inventory, position, etc.");
                 System.out.println("move left: Enter the room to the left");
                 System.out.println("move right: Enter the room to the right");

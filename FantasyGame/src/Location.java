@@ -52,8 +52,9 @@ public class Location {
             }
         }
         for (Room room:rooms) {
-            map[room.position.getRoomY()-minY][room.position.getRoomX()-minX] = 'X';
+            map[room.position.getRoomY()-minY][room.position.getRoomX()-minX] = 'x';
         }
+        map[0-minY][0-minX] = 'E';
         map[y-minY][x-minX] = 'O';
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {
