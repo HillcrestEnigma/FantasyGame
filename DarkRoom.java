@@ -49,4 +49,8 @@ class DarkRoom extends Room {
         }
         else return false;
     }
+
+    public void look() {
+        System.out.println("The room is very dark, and you make out only a few details.");
+    }
 }

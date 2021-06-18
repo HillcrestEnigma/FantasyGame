@@ -9,6 +9,10 @@ public class Entity {
         position = p;
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
     public boolean canMoveLeft(Location loc) {
         return loc.getRoom(position.getRoomX()-1, position.getRoomY()) != null;
     }

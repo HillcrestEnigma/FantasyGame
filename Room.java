@@ -38,4 +38,8 @@ public class Room {
         }
         else return false;
     }
+
+    public void look() {
+        System.out.println("You look around... and see nothing.");
+    }
 }
