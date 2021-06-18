@@ -1,5 +1,5 @@
-import java.util.*;
-
+import java.util.List;
+import java.util.ArrayList;
 /**
  * This is an interface for locations in the games
  * 
@@ -32,5 +32,34 @@ public class Location {
 
     public int getSize() {
         return rooms.size();
+    }
+    
+    public void map(int x, int y) {
+        int minX = Integer.MAX_VALUE;
+        int minY = Integer.MAX_VALUE;
+        int maxX = Integer.MIN_VALUE;
+        int maxY = Integer.MIN_VALUE;
+        for (Room room:rooms) {
+            if (maxX < room.position.getRoomX()) maxX = room.position.getRoomX();
+            else if (minX > room.position.getRoomX()) minX = room.position.getRoomX();
+            if (maxY < room.position.getRoomY()) maxY = room.position.getRoomY();
+            else if (minY > room.position.getRoomY()) minY = room.position.getRoomY();
+        }
+        char[][] map = new char[maxY-minY+1][maxX-minX+1];
+        for (int i = 0; i < maxY-minY+1; i++) {
+            for (int j = 0; j < maxX-minX+1; j++) {
+                map[i][j] = '.';
+            }
+        }
+        for (Room room:rooms) {
+            map[room.position.getRoomY()-minY][room.position.getRoomX()-minX] = 'X';
+        }
+        map[y-minY][x-minX] = 'O';
+        for(int i = 0; i < map.length; i++) {
+            for(int j = 0; j < map[0].length; j++) {
+                System.out.print(map[i][j]);
+            }
+            System.out.println();
+        }
     }
 }
