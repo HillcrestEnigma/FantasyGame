@@ -1,6 +1,8 @@
 public class Entity {
     private Position position;
     private String name;
+    public Inventory inventory = new Inventory();
+    private int health = 100;
 
     public Entity(String n, Position p) {
         name = n;
@@ -49,5 +51,15 @@ public class Entity {
             position.moveDown();
             return true;
         } else return false;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public boolean teleport(String location) {
+        position.setLocation(loation);
+        position.setRoomX(0);
+        position.setRoomY(0);
     }
 }

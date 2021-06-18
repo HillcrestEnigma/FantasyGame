@@ -9,6 +9,10 @@ public class Position {
         roomY = y;
     }
 
+    public Position(String loc) {
+        this(loc, 0, 0);
+    }
+
     public String getLocation() {
         return location;
     }
