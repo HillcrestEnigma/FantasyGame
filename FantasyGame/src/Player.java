@@ -8,6 +8,7 @@ import java.util.*;
 public class Player extends Entity {
     public Player(String n, Position p) {
         super(n, p);
+        inventory.addItem(new Item("Potion"));
     }
 
     public void look(Location location) {
