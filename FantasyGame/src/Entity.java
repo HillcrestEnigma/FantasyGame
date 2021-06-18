@@ -24,7 +24,7 @@ public class Entity {
     public boolean moveLeft(Location loc) {
         if (canMoveLeft(loc)) {
             position.moveLeft();
-            enterRoom(location);
+            enterRoom(loc);
             return true;
         } else return false;
     }
@@ -36,7 +36,7 @@ public class Entity {
     public boolean moveRight(Location loc) {
         if (canMoveRight(loc)) {
             position.moveRight();
-            enterRoom(location);
+            enterRoom(loc);
             return true;
         } else return false;
     }
@@ -48,7 +48,7 @@ public class Entity {
     public boolean moveForward(Location loc) {
         if (canMoveForward(loc)) {
             position.moveUp();
-            enterRoom(location);
+            enterRoom(loc);
             return true;
         } else return false;
     }
@@ -58,14 +58,14 @@ public class Entity {
     }
 
     public boolean moveBehind(Location loc) {
-        if (canMoveDown(loc)) {
+        if (canMoveBehind(loc)) {
             position.moveDown();
-            enterRoom(location);
+            enterRoom(loc);
             return true;
         } else return false;
     }
 
-    public void enterRoom() {
+    public void enterRoom(Location loc) {
     }
 
     public int getHealth() {
