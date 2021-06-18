@@ -3,8 +3,7 @@ import java.util.Random; // https://www.tutorialspoint.com/java/util/java_util_r
 
 /**
  * This class is responsible for constructing levels and coordinating interaction of
- * Elves with Darkrooms.
- *
+ * Elves with Darkrooms.  
  *
  */
 public class Game {
@@ -33,10 +32,14 @@ public class Game {
     public void play() {
         Scanner scanner = new Scanner(System.in);
         String command;
-        Location location;
+        Location location = getLocationByName(player.getPosition().getLocation());
 
         System.out.println("Welcome to Fantasy!");
-        System.out.println("Type \"help\" to view a list of commands.");
+        System.out.println("Type \"help\" to view a list of commands.\n");
+
+        player.enterRoom(location);
+        // player.look(location);
+
         while (true) {
             location = getLocationByName(player.getPosition().getLocation());
 
@@ -64,16 +67,16 @@ public class Game {
             } else if (command.equals("status")) {
                 player.printStatus();
             } else if (command.equals("move left")) {
-                System.out.println("Moving...");
+                System.out.println("Moving...\n");
                 if (!player.moveLeft(location)) System.out.println("You can't enter the room to the left!");
             } else if (command.equals("move right")) {
-                System.out.println("Moving...");
+                System.out.println("Moving...\n");
                 if (!player.moveRight(location)) System.out.println("You can't enter the room to the right!");
             } else if (command.equals("move forward")) {
-                System.out.println("Moving...");
+                System.out.println("Moving...\n");
                 if (!player.moveForward(location)) System.out.println("You can't enter the room forward!");
             } else if (command.equals("move behind")) {
-                System.out.println("Moving...");
+                System.out.println("Moving...\n");
                 if (!player.moveBehind(location)) System.out.println("You can't enter the room behind!");
             } else if (command.equals("map")) {
                 location.map(player.getPosition().getRoomX(),
