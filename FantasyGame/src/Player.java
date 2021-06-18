@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * This class represents the sole character of the game.
  * 
@@ -33,10 +35,21 @@ public class Player extends Entity {
             System.out.print("behind");
             beforePrintFirstDirection = false;
         }
-        System.out.println(".");
+        System.out.println(".\n");
+
+        pickUpItems(location);
     }
 
-    public void enterRoom(Location location) {
-        inventory.expand();
+    public void pickUpItems(Location location) {
+        System.out.print("You find ");
+        List<Item> items = getRoom(location).inventory.getItems();
+        if (items.size() > 0) {
+            for (int i=0; i<items.size(); i++) {
+                if (i > 0) System.out.print(", ");
+                System.out.print(items.get(i).quantity + " " + items.get(i).getName());
+            }
+        } else System.out.print("nothing");
+        System.out.println(" in the room.");
+        inventory.expand(getRoom(location).inventory);
     }
 }

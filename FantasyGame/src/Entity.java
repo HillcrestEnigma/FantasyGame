@@ -14,7 +14,7 @@ public class Entity {
     }
 
     public Room getRoom(Location location) {
-        return location.getRoom(position.getRoomX(), position.getRoomY())
+        return location.getRoom(position.getRoomX(), position.getRoomY());
     }
 
     public boolean canMoveLeft(Location loc) {
@@ -24,7 +24,7 @@ public class Entity {
     public boolean moveLeft(Location loc) {
         if (canMoveLeft(loc)) {
             position.moveLeft();
-            enterRoom(location);
+            enterRoom(loc);
             return true;
         } else return false;
     }
@@ -36,7 +36,7 @@ public class Entity {
     public boolean moveRight(Location loc) {
         if (canMoveRight(loc)) {
             position.moveRight();
-            enterRoom(location);
+            enterRoom(loc);
             return true;
         } else return false;
     }
@@ -48,7 +48,7 @@ public class Entity {
     public boolean moveUp(Location loc) {
         if (canMoveUp(loc)) {
             position.moveUp();
-            enterRoom(location);
+            enterRoom(loc);
             return true;
         } else return false;
     }
@@ -60,12 +60,12 @@ public class Entity {
     public boolean moveDown(Location loc) {
         if (canMoveDown(loc)) {
             position.moveDown();
-            enterRoom(location);
+            enterRoom(loc);
             return true;
         } else return false;
     }
 
-    public void enterRoom() {
+    public void enterRoom(Location loc) {
     }
 
     public int getHealth() {
