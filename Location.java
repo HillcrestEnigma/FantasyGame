@@ -1,3 +1,5 @@
+import java.util.List;
+import java.util.ArrayList;
 /**
  * This is an interface for locations in the games
  * 
