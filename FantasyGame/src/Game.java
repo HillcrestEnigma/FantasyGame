@@ -52,6 +52,9 @@ public class Game {
                 System.out.println("help: View this helpful help message");
                 System.out.println("exit: Exit the game");
                 System.out.println("look: Observe the room you are in");
+                System.out.println("map: Displays a map of the castle. Your"
+                        + " location is marked with O, and rooms are marked"
+                        + " with X");
                 System.out.println("status: Check your health, inventory, position, etc.");
                 System.out.println("move left: Enter the room to the left");
                 System.out.println("move right: Enter the room to the right");
@@ -75,6 +78,9 @@ public class Game {
             } else if (command.equals("move behind")) {
                 System.out.println("Moving...\n");
                 if (!player.moveBehind(location)) System.out.println("You can't enter the room behind!");
+            } else if (command.equals("map")) {
+                location.map(player.getPosition().getRoomX(),
+                        player.getPosition().getRoomY());
             } else {
                 System.out.println("Wrong command. Type \"help\" to view a list of commands.");
             }
