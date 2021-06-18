@@ -39,7 +39,7 @@ public class Entity {
         return loc.getRoom(position.getRoomX(), position.getRoomY()-1) != null;
     }
 
-    public boolean moveUp(Loation loc) {
+    public boolean moveUp(Location loc) {
         if (canMoveUp(loc)) {
             position.moveUp();
             return true;
@@ -62,7 +62,7 @@ public class Entity {
     }
 
     public boolean teleport(String location) {
-        position.setLocation(loation);
+        position.setLocation(location);
         position.setRoomX(0);
         position.setRoomY(0);
     }
