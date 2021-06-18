@@ -1,17 +1,53 @@
 public class Entity {
-    private Position pos;
+    private Position position;
     private String name;
-    private String type;
 
-    public void moveLeft() {
+    public Entity(String n, Position p) {
+        name = n;
+        position = p;
     }
 
-    public void moveRight() {
+    public boolean canMoveLeft(Location loc) {
+        return loc.getRoom(position.getRoomX()-1, position.getRoomY()) != null;
     }
 
-    public void moveUp() {
+    public boolean moveLeft(Location loc) {
+        if (canMoveLeft(loc)) {
+            position.moveLeft();
+            return true;
+        } else return false;
     }
 
-    public void moveDown() {
+    public boolean canMoveRight(Location loc) {
+        return loc.getRoom(position.getRoomX()+1, position.getRoomY()) != null;
+    }
+
+    public boolean moveRight(Location loc) {
+        if (canMoveRight(loc)) {
+            position.moveRight();
+            return true;
+        } else return false;
+    }
+
+    public boolean canMoveUp(Location loc) {
+        return loc.getRoom(position.getRoomX(), position.getRoomY()-1) != null;
+    }
+
+    public boolean moveUp(Loation loc) {
+        if (canMoveUp(loc)) {
+            position.moveUp();
+            return true;
+        } else return false;
+    }
+
+    public boolean canMoveDown(Location loc) {
+        return loc.getRoom(position.getRoomX(), position.getRoomY()+1) != null;
+    }
+
+    public boolean moveDown(Location loc) {
+        if (canMoveDown(loc)) {
+            position.moveDown();
+            return true;
+        } else return false;
     }
 }

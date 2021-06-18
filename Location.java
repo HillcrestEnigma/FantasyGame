@@ -7,8 +7,16 @@
 public class Location {
     private List<Room> rooms;
 
-    public Location(int seed) {
+    public Location() {
         rooms = new ArrayList<Room>();
+    }
+
+    public boolean addRoom(Room room) {
+        for (int i=0; i<rooms.size(); i++) {
+            if (rooms.get(i).position.equals(room.position)) return false;
+        }
+        rooms.add(room);
+        return true;
     }
 
     public Room getRoom(int x, int y) {

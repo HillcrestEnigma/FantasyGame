@@ -1,63 +1,20 @@
-
-
 import java.util.ArrayList;
+import java.util.Random; // https://www.tutorialspoint.com/java/util/java_util_random.htm
 
-class Castle {
-	ArrayList<DarkRoom> rooms;
-	
-	Castle()
-	{
-		rooms = new ArrayList<DarkRoom>();
-	}
-	
-	/**
-	 * Adds a DarkRoom to the Castle level
-	 * @param room
-	 */
-	void addRoom(DarkRoom room)
-	{
-		rooms.add(room);
-	}
-	
-	/**
-	 * Occurs when an Elf enters a DarkRoom
-	 * @param elf The Elf
-	 * @param room The DarkRoom
-	 */
-	void enterRoom(Elf elf, DarkRoom room)
-	{
-		room.enter(elf);
-		
-		System.out.println(elf.getName() + " enters the " + room.getName() );
-	}
-	
-	/**
-	 * Occurs when an Elf leaves a DarkRoom.
-	 * @param elf The Elf.
-	 * @param room The DarkRoom
-	 */
-	void exitRoom(Elf elf, DarkRoom room)
-	{
-		room.exit(elf);
-		
-		System.out.println(elf.getName() + " leaves the " + room.getName() );
-	}
-	
-	/**
-	 * Returns the number of DarkRooms.
-	 * @return The number of DarkRooms.
-	 */
-	int getRoomCount()
-	{
-		return rooms.size();
-	}
-
-	/**
-	 * Returns a DarkRoom according to index.
-	 * @param index
-	 * @return
-	 */
-	DarkRoom getRoom(int index) {
-		return rooms.get(index);
-	}
+class Castle extends Location {
+    public Castle(long seed) {
+        Random rng = new Random(seed);
+        int goldAmt = rng.nextInt(5) + 5;
+        int x = 0;
+        int y = 0;
+        int direction;
+        while (rooms.size() < 100) {
+            direction = rng.nextInt(4);
+            if (direction == 0) x++;
+            else if (direction == 1) x--;
+            else if (direction == 2) y++;
+            else y--;
+            rooms.addRoom(new Room(x, y, rng.nextLong()));
+        }
+    }
 }
