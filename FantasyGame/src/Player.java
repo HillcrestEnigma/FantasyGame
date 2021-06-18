@@ -51,4 +51,17 @@ public class Player extends Entity {
         System.out.println(" in the room.");
         inventory.expand(getRoom(location).inventory);
     }
+
+    public void printStatus() {
+        System.out.println("===== Status =====");
+        System.out.println("Health: " + getHealth() + "%");
+        System.out.println("Position: Currently in " + getPosition().getLocation() + " at X=" + getPosition().getRoomX() + " Y=" + getPosition().getRoomY() + ".");
+        System.out.println("\n===== Inventory =====");
+        if (inventory.size() > 0) {
+            for (Item item:inventory.getItems()) {
+                System.out.println(item.quantity + " " + item.getName());
+            }
+        } else System.out.println("There is nothing in your inventory. :(");
+        
+    }
 }

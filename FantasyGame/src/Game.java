@@ -49,6 +49,7 @@ public class Game {
                 System.out.println("help: View this helpful help message");
                 System.out.println("exit: Exit the game");
                 System.out.println("look: Observe the room you are in");
+                System.out.println("status: Check your health, inventory, position, etc.");
                 System.out.println("move left: Enter the room to the left");
                 System.out.println("move right: Enter the room to the right");
                 System.out.println("move forward: Enter the room forward");
@@ -57,6 +58,8 @@ public class Game {
                 break;
             } else if (command.equals("look")) {
                 player.look(location);
+            } else if (command.equals("status")) {
+                player.printStatus();
             } else if (command.equals("move left")) {
                 System.out.println("Moving...");
                 if (!player.moveLeft(location)) System.out.println("You can't enter the room to the left!");
