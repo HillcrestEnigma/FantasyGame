@@ -14,24 +14,24 @@ public class Player extends Entity {
 
         boolean beforePrintFirstDirection = true;
         System.out.print("\nFrom this room you can enter the room ");
-        if (canMoveLeft()) {
+        if (canMoveLeft(location)) {
             System.out.print("to the left");
         }
-        if (canMoveRight()) {
+        if (canMoveRight(location)) {
             if (!beforePrintFirstDirection) {
                 System.out.print(", ");
                 beforePrintFirstDirection = false;
             }
             System.out.print("to the right");
         }
-        if (canMoveUp()) {
+        if (canMoveUp(location)) {
             if (!beforePrintFirstDirection) {
                 System.out.print(", ");
                 beforePrintFirstDirection = false;
             }
             System.out.print("forward");
         }
-        if (canMoveDown()) {
+        if (canMoveDown(location)) {
             if (!beforePrintFirstDirection) {
                 System.out.print(", ");
                 beforePrintFirstDirection = false;

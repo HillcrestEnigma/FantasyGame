@@ -42,7 +42,8 @@ public class Inventory {
     public boolean give(Inventory otherInv, String itemName, int quantity) {
         if (updateItemQuantity(itemName, -quantity)) {
             otherInv.addItem(new Item(itemName, quantity));
-        }
+            return true;
+        } else return false;
     }
 
     public void clear() {

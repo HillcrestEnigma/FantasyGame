@@ -8,13 +8,13 @@ class Castle extends Location {
         int x = 0;
         int y = 0;
         int direction;
-        while (rooms.size() < 100) {
+        while (getSize() < 100) {
             direction = rng.nextInt(4);
             if (direction == 0) x++;
             else if (direction == 1) x--;
             else if (direction == 2) y++;
             else y--;
-            rooms.addRoom(new Room(x, y, rng.nextLong()));
+            addRoom(new DarkRoom(x, y, rng.nextLong()));
         }
     }
 }

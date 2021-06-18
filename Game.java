@@ -56,16 +56,16 @@ public class Game {
             } else if (command.equals("look")) {
                 player.look(location);
             } else if (command.equals("move left")) {
-                if (player.moveLeft()) System.out.println("Moving...");
+                if (player.moveLeft(location)) System.out.println("Moving...");
                 else System.out.println("You can't enter the room to the left!");
             } else if (command.equals("move right")) {
-                if (player.moveRight()) System.out.println("Moving...");
+                if (player.moveRight(location)) System.out.println("Moving...");
                 else System.out.println("You can't enter the room to the right!");
             } else if (command.equals("move up")) {
-                if (player.moveUp()) System.out.println("Moving...");
+                if (player.moveUp(location)) System.out.println("Moving...");
                 else System.out.println("You can't enter the room forward!");
             } else if (command.equals("move down")) {
-                if (player.moveUp()) System.out.println("Moving...");
+                if (player.moveUp(location)) System.out.println("Moving...");
                 else System.out.println("You can't enter the room behind!");
             } else {
                 System.out.println("Wrong command. Type \"help\" to view a list of commands.");

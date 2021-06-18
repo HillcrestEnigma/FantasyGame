@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * This is an interface for locations in the games
  * 
@@ -21,19 +23,14 @@ public class Location {
 
     public Room getRoom(int x, int y) {
         for (Room room:rooms) {
-            if (room.getRoomX() == x && room.getRoomY() == y) {
+            if (room.position.getRoomX() == x && room.position.getRoomY() == y) {
                 return room;
             }
         }
         return null;
     }
 
-    /**
-     * Method that checks if the player can enter
-     * 
-     * @param elf
-     * @return 
-     */
-    public boolean canEnter(Elf elf) {
+    public int getSize() {
+        return rooms.size();
     }
 }
