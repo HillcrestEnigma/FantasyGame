@@ -10,7 +10,7 @@ public class Player extends Entity {
     }
 
     public void look(Location location) {
-        location.getRoom(getPosition().getRoomX(), getPosition().getRoomY()).look();
+        getRoom(location).look();
 
         boolean beforePrintFirstDirection = true;
         System.out.print("\nFrom this room you can enter the room ");
@@ -34,5 +34,9 @@ public class Player extends Entity {
             beforePrintFirstDirection = false;
         }
         System.out.println(".");
+    }
+
+    public void enterRoom(Location location) {
+        inventory.expand();
     }
 }
