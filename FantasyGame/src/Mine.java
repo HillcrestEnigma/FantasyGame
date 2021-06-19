@@ -39,7 +39,7 @@ public class Mine extends Location {
 
     public boolean entryRequirementMet(Entity entity, boolean verbose) {
         if (entity.inventory.updateItemQuantity("Gold", -250)) {
-            if (verbose) System.out.println("Entrance fee of 250 Gold has been paid. Welcome!");
+            if (verbose) System.out.println("Entrance fee of 250 Gold has been paid. Welcome!\n");
             return true;
         } else {
             if (verbose) System.out.println("You need to pay 250 Gold to enter the mine - Not enough gold.");
