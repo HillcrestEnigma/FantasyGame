@@ -66,10 +66,16 @@ public class MiningAction extends Action {
                 try {
                     Thread.sleep(1000);
                     int goldQuantity = player.getRoom(location).inventory.getItem("Gold").quantity;
-                    if (goldQuantity > 9)
+                    if (goldQuantity > 9) {
                         player.getRoom(location).inventory.give(player.inventory, "Gold", 10);
-                    else player.getRoom(location).inventory.give(player.inventory, "Gold", goldQuantity);
-                    System.out.println("and get 10 pieces of gold.");
+                        System.out.println("and get 10 pieces of gold.");
+                    }
+                    else {
+                        player.getRoom(location).inventory.give(player.inventory, "Gold", goldQuantity);
+                        if (goldQuantity != 1)
+                        System.out.println("and get " + goldQuantity + " pieces of gold.");
+                        else System.out.println("and get 1 piece of gold.");
+                    }
                 }
                 catch (Exception e) {}
             }
