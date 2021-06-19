@@ -19,11 +19,12 @@ public class Stock implements Asynchronous {
         price = rng.nextInt(190) + 10;
     }
 
-    public void tick() {
+    public String tick(Player player, Location location) {
         if (streak == 0) streak = rng.nextInt(240) + 60;
         streak--;
         if (isBull) price += rng.nextInt(2);
         else price -= rng.nextInt(2);
+        return null;
     }
 
     public String getTicker() {

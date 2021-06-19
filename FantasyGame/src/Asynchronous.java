@@ -5,5 +5,5 @@
  * @author Jing Sun & Paul Lee
  */
 public interface Asynchronous {
-    public void tick();
+    public String tick(Player player, Location location);
 }

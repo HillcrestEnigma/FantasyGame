@@ -33,9 +33,11 @@ public class Game {
         this.castle = new Castle(this.rng.nextLong());
         this.home = new Home();
         this.stockexchange = new StockExchange(this.rng.nextLong());
-        this.player = new Player("Player", new Position("castle", 0, 0));
+        this.player = new Player(new Position("castle", 0, 0));
         this.asyncList = new ArrayList<Asynchronous>();
         this.asyncLastUpdate = System.currentTimeMillis();
+
+        this.asyncList.add(new RivalElf(new Position("castle", 0, 0), this.rng.nextLong()));
     }
     
     /**
@@ -61,7 +63,7 @@ public class Game {
      */
     public void play() {
         Scanner scanner = new Scanner(System.in);
-        String command;
+        String command, result;
         List<Asynchronous> newAsync;
         long timeDeltaSinceAsyncLastUpdate;
         Location location = getLocationByName(player.getPosition().getLocation());
@@ -90,7 +92,10 @@ public class Game {
             timeDeltaSinceAsyncLastUpdate = System.currentTimeMillis() - asyncLastUpdate;
             asyncLastUpdate = System.currentTimeMillis();
             for (int i=0; i < timeDeltaSinceAsyncLastUpdate / 500L; i++) {
-                for (Asynchronous async:asyncList) async.tick();
+                for (Asynchronous async:asyncList) {
+                    result = async.tick(player, location);
+                    if (result != null) System.out.println("\n" + result);
+                }
             }
 
             System.out.print("\n> ");

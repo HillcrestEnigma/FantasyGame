@@ -8,6 +8,7 @@ import java.util.Random; // https://www.tutorialspoint.com/java/util/java_util_r
 class DarkRoom extends Room {
     //Instance variable
     private boolean radioactive;
+    private boolean lootedByRivalElf = false;
 	
     /**
      * Constructs a DarkRoom
@@ -56,6 +57,7 @@ class DarkRoom extends Room {
     @Override
     public void look() {
         System.out.println("The room is very dark, and you make out only a few details.");
+        if (lootedByRivalElf) System.out.println("Looks like this room has been looted already by another elf.");
     }
     
     /**
@@ -65,5 +67,13 @@ class DarkRoom extends Room {
      */
     public boolean isRadioactive() {
         return radioactive;
+    }
+
+    public boolean getLootedByRivalElf() {
+        return lootedByRivalElf;
+    }
+
+    public void lootAsRivalElf() {
+        lootedByRivalElf = true;
     }
 }

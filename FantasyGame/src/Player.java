@@ -12,8 +12,8 @@ public class Player extends Entity {
      * @param n
      * @param p 
      */
-    public Player(String n, Position p) {
-        super(n, p);
+    public Player(Position p) {
+        super("Player", p);
         inventory.addItem(new Item("Potion"));
     }
     
