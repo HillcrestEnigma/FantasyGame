@@ -30,9 +30,9 @@ class DarkRoom extends Room {
      * @param seed 
      */
     public DarkRoom(int x, int y, long seed) {
-        this(x, y, 5, false);
+        this(x, y, 10, false);
         Random rng = new Random(seed);
-        inventory.addItem(new Item("Gold", rng.nextInt(5)));
+        inventory.addItem(new Item("Gold", rng.nextInt(10)));
         radioactive = rng.nextInt(100) < 10;
     }
 	
