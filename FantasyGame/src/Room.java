@@ -27,7 +27,7 @@ public class Room {
      * @param elf 
      * @return
      */
-    public boolean enter(Entity entity) {
+    public boolean enter(Entity entity, Location location, boolean verbose) {
         return true;
     }
     

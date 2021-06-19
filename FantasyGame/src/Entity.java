@@ -181,22 +181,24 @@ public class Entity {
      * 
      * @param location 
      */
-    public void teleport(String location) {
-        position.setLocation(location);
+    public void teleport(Location location) {
+        position.setLocation(location.getName());
         position.setRoomX(0);
         position.setRoomY(0);
+        enterRoom(location);
     }
-    
+
     /**
-     * Restocks potions for the entity if it can
-     * 
-     * @return 
+     * Allows the entity to drink potions
+     *
+     * @param amount
+     * @return
      */
-    public boolean stockPotion() { 
-        if (position.getLocation().equals("Home")) {
-            inventory.setItemQuantity("Potion", 5);
+    public boolean drinkPotion() {
+        if (!inventory.updateItemQuantity("Potion", -1) || health == 100) return false;
+        else {
+            health = Math.min(100, health + 10);
             return true;
         }
-        else return false;
     }
 }

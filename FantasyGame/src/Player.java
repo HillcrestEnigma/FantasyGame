@@ -25,28 +25,13 @@ public class Player extends Entity {
     public void look(Location location) {
         getRoom(location).look();
 
-        boolean beforePrintFirstDirection = true;
-        System.out.print("\nFrom this room you can enter the room ");
-        if (canMoveLeft(location)) {
-            System.out.print("to the left");
-            beforePrintFirstDirection = false;
-        }
-        if (canMoveRight(location)) {
-            if (!beforePrintFirstDirection) System.out.print(", ");
-            System.out.print("to the right");
-            beforePrintFirstDirection = false;
-        }
-        if (canMoveForward(location)) {
-            if (!beforePrintFirstDirection) System.out.print(", ");
-            System.out.print("forward");
-            beforePrintFirstDirection = false;
-        }
-        if (canMoveBehind(location)) {
-            if (!beforePrintFirstDirection) System.out.print(", ");
-            System.out.print("behind");
-            beforePrintFirstDirection = false;
-        }
-        System.out.println(".\n");
+        ArrayList<String> directions = new ArrayList<String>();
+        if (canMoveLeft(location)) directions.add("to the left");
+        if (canMoveRight(location)) directions.add("to the right");
+        if (canMoveForward(location)) directions.add("forward");
+        if (canMoveBehind(location)) directions.add("behind");
+        if (directions.size() == 0) System.out.println("\nThere are no adjacent rooms. Looks like you are surrounded!\n");
+        else System.out.println("\nFrom this room you can enter the room " + Util.humanList(directions) + ".\n");
 
         pickUpItems(location);
     }
@@ -59,13 +44,8 @@ public class Player extends Entity {
     @Override
     public void enterRoom(Location location) {
         Room room = getRoom(location);
-        if (room instanceof DarkRoom) {
-            DarkRoom darkRoom = (DarkRoom) room;
-            if (darkRoom.isRadioactive()) {
-                takeDamage(5);
-                System.out.println("You feel the radioactivity in the room. You take 5% health damage. Your new health level is " + getHealth() + "%.\n");
-            }
-        }
+
+        room.enter(this, location, true);
 
         look(location);
     }

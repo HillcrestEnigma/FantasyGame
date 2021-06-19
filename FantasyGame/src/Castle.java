@@ -13,8 +13,8 @@ class Castle extends Location {
      * @param seed 
      */
     public Castle(long seed) {
+        super("castle");
         Random rng = new Random(seed);
-        int goldAmt = rng.nextInt(10) + 10;
         int x = 0;
         int y = 0;
         int direction;

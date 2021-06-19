@@ -9,6 +9,7 @@ public class Home extends Location {
      * Home constructor
      */
     public Home() {
-        addRoom(new Room("Home", 0, 0));
+        super("home");
+        addRoom(new LivingRoom(0, 0));
     }
 }

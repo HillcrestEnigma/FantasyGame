@@ -13,7 +13,7 @@ public class Main {
      */
     public static void main(String[] args) {
         String seed;
-        System.out.println("Enter a seed: ");
+        System.out.print("Enter a seed: ");
         Scanner scanner = new Scanner(System.in);
         seed = scanner.nextLine();
         Game game = new Game(seed);

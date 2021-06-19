@@ -13,6 +13,7 @@ public class Game {
     private long seed;
     private Random rng;
     private Castle castle;
+    private Home home;
     private Player player;
     
     /**
@@ -26,6 +27,7 @@ public class Game {
         this.rng = new Random(this.seed);
 
         this.castle = new Castle(this.rng.nextLong());
+        this.home = new Home();
         this.player = new Player("Player", new Position("castle", 0, 0));
     }
     
@@ -38,6 +40,8 @@ public class Game {
     private Location getLocationByName(String name) {
         if (name.equals("castle")) {
             return this.castle;
+        } else if (name.equals("home")) {
+            return this.home;
         } else {
             return null;
         }
@@ -58,17 +62,11 @@ public class Game {
         // player.look(location);
 
         while (true) {
-            boolean gameOver = false;
-            for(Item item:player.inventory.getItems()) {
-                if (item.getName().equals("Gold")) {
-                    if(item.quantity >= 1000) {
-                        System.out.println("You beat the game!");
-                        gameOver = true;
-                        break;
-                    }
-                }
+            if (player.inventory.getItem("Gold").quantity >= 1000) {
+                System.out.println("You beat the game!");
+                return;
             }
-            if (gameOver) break;
+
             location = getLocationByName(player.getPosition().getLocation());
             
             System.out.print("\n> ");
@@ -86,9 +84,7 @@ public class Game {
                 System.out.println("move right: Enter the room to the right");
                 System.out.println("move forward: Enter the room forward");
                 System.out.println("move behind: Enter the room behind");
-                System.out.println("teleport home: Teleports you home. Only"
-                        + " functional at a location entrance");
-                System.out.println("restock: Restocks your potions for a max of 5");
+                System.out.println("goto home: Teleports you to your home");
             } else if (command.equals("exit")) {
                 break;
             } else if (command.equals("look")) {
@@ -109,15 +105,8 @@ public class Game {
             } else if (command.equals("move behind")) {
                 System.out.println("Moving...\n");
                 if (!player.moveBehind(location)) System.out.println("You can't enter the room behind!");
-            } else if (command.equals("teleport home")) {
-                if (player.getPosition().getRoomX() == 0 && player.getPosition().getRoomY() == 0) {
-                    player.teleport("Home");
-                    System.out.println("Yoou have teleported home.");
-                }
-                else System.out.println("You are not at the entrance!");
-            } else if (command.equals("restock")) {
-                if (player.stockPotion()) System.out.println("You restocked you potions.");
-                else System.out.println("You're not at home!");
+            } else if (command.equals("goto home")) {
+                player.teleport(getLocationByName("home"));
             } else {
                 System.out.println("Wrong command. Type \"help\" to view a list of commands.");
             }

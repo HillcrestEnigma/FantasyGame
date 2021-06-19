@@ -9,12 +9,14 @@ import java.util.ArrayList;
 public class Location {
     //Instance variables
     private List<Room> rooms;
+    private String name;
     
     /**
      * Location constructor
      */
-    public Location() {
+    public Location(String n) {
         rooms = new ArrayList<Room>();
+        name = n;
     }
     
     /**
@@ -92,5 +94,9 @@ public class Location {
             System.out.println();
         }
         System.out.println("\nx = Rooms\nO = Your Location\nE = Entrance");
+    }
+
+    public String getName() {
+        return name;
     }
 }
