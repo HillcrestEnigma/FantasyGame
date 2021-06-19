@@ -6,8 +6,11 @@ import java.util.*;
  * @author Jing Sun & Paul Lee
  */
 class TradingFloor extends Room {
+    
+    //Instance variables
     Random rng;
     List<Stock> stocks;
+    
     /**
      * Constructs a TradingFloor
      * 

@@ -7,6 +7,7 @@ import java.util.*;
  * @author JingKun
  */
 public class Room {
+    
     //Instance variables
     public Inventory inventory;
     public Position position;

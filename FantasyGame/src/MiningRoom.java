@@ -72,7 +72,12 @@ public class MiningRoom extends Room {
     public boolean isRadioactive() {
         return radioactive;
     }
-
+    
+    /**
+     * Makes sure you can't auto pickup items in the mining room
+     * 
+     * @return 
+     */
     public boolean autoPickUpItems() {
         return false;
     }

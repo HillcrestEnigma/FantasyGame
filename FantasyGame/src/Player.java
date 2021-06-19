@@ -6,6 +6,7 @@ import java.util.*;
  * @author Jing Sun & Paul Lee
  */
 public class Player extends Entity {
+    
     /**
      * Player constructor
      * 

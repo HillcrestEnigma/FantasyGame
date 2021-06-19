@@ -5,6 +5,7 @@
  * @author Jing Sun & Paul Lee
  */
 public class Position {
+    
     //Instance variables
     private String location;
     private int roomX;

@@ -7,6 +7,7 @@ import java.util.Random; // https://www.tutorialspoint.com/java/util/java_util_r
  * @author Jing Sun & Paul Lee
  */
 class Castle extends Location {
+    
     /**
      * Generates the rooms of the castle based on a given seed
      * 
@@ -29,7 +30,14 @@ class Castle extends Location {
         }
 
     }
-
+    
+    /**
+     * Makes sure the player has at least 25 health before they can exit the castle
+     * 
+     * @param entity
+     * @param verbose
+     * @return 
+     */
     @Override
     public boolean exitRequirementMet(Entity entity, boolean verbose) {
         if (entity.getHealth() >= 25) return true;

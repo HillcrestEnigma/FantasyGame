@@ -5,6 +5,7 @@
  * @author Jing Sun & Paul Lee
  */
 public interface Asynchronous {
+    
     public String tick(Player player, Location location);
 
     public String getAsynchronousLocationContext();

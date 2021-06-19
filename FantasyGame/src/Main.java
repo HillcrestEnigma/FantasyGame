@@ -6,6 +6,7 @@ import java.util.Scanner;
  * @author Jing Sun & Paul Lee
  */
 public class Main {
+    
     /**
      * Main method
      * 

@@ -69,39 +69,55 @@ public class Game {
      * Plays the game out in the console
      */
     public void play() {
+        
+        //Variables
         Scanner scanner = new Scanner(System.in);
         String command, result;
         List<Asynchronous> newAsync;
         long timeDeltaSinceAsyncLastUpdate;
         Location location = getLocationByName(player.getPosition().getLocation());
-
+        
+        //Header
         System.out.println("Welcome to Fantasy!");
         System.out.println("Type \"help\" to view a list of commands.\n");
-
+        
+        //The player enters the room
         player.enterRoom(location);
         // player.look(location);
-
+        
         while (true) {
+            
             //Checks if the player won
-            if (player.inventory.getItem("Gold") != null && player.inventory.getItem("Gold").quantity >= 1000) {
+            if (player.inventory.getItem("Gold") != null 
+                    && player.inventory.getItem("Gold").quantity >= 1000) {
+                System.out.println("You beat the game!");
+                return;
+            }
+            else if (player.inventory.getItem("Gold") != null 
+                    && player.inventory.getItem("Gold Chunk") != null
+                    && player.inventory.getItem("Gold").quantity 
+                    + player.inventory.getItem("Gold Chunk").quantity * 10 >= 1000) {
                 System.out.println("You beat the game!");
                 return;
             }
             
+            //Checks if the player died
             if (!player.isAlive) {
                 System.out.println("Your health reached zero and you died!");
                 return;
             }
-
+            
+            //Retrieves location
             location = getLocationByName(player.getPosition().getLocation());
             
+            //Adds asynchronous functions
             newAsync = player.fetchAsynchronous(location);
             if (newAsync != null) {
                 for (Asynchronous async:newAsync) {
                     asyncList.add(async);
                 }
             }
-
+            
             timeDeltaSinceAsyncLastUpdate = System.currentTimeMillis() - asyncLastUpdate;
             asyncLastUpdate = System.currentTimeMillis();
             for (int i=0; i < timeDeltaSinceAsyncLastUpdate / 500L; i++) {
@@ -110,10 +126,12 @@ public class Game {
                     if (result != null) System.out.println("\n" + result);
                 }
             }
-
+            
+            //Line for the player to type on
             System.out.print("\n> ");
             command = scanner.nextLine();
             System.out.println();
+            
             //Commands
             if (command.equals("help")) {
                 System.out.println("===== Help =====");
