@@ -1,18 +1,20 @@
 import java.util.*;
 /**
- * This class represents the sole character of the game.
+ * This class represents the player's enemy
  *
  * @version 06-18-2021
  * @author Jing Sun & Paul Lee
  */
 public class RivalElf extends Entity implements Asynchronous {
+    //Instance variables
     Random rng;
     boolean introducedItself = false;
     boolean sameRoomPlayerNotice = false;
     boolean exitedCastle = false;
     int noGoldStreak = 0;
+    
     /**
-     * Player constructor
+     * Rival elf constructor
      * 
      * @param n
      * @param p 
@@ -22,7 +24,14 @@ public class RivalElf extends Entity implements Asynchronous {
         rng = new Random(seed);
         inventory.addItem(new Item("Potion"));
     }
-
+    
+    /**
+     * Allows ticks
+     * 
+     * @param player
+     * @param location
+     * @return 
+     */
     public String tick(Player player, Location location) {
         if (exitedCastle) return null;
         if (!introducedItself && player.getPosition().equals(this.getPosition())) {
@@ -79,7 +88,7 @@ public class RivalElf extends Entity implements Asynchronous {
     }
     
     /**
-     * Allows the player to enter a room
+     * Allows the rival elf to enter a room
      * 
      * @param location 
      */
@@ -96,7 +105,7 @@ public class RivalElf extends Entity implements Asynchronous {
     }
     
     /**
-     * Allows the player to pick up items
+     * Allows the rival elf to pick up items
      * 
      * @param location 
      */

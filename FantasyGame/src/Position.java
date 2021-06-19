@@ -120,6 +120,7 @@ public class Position {
      * @param other
      * @return 
      */
+    @Override
     public boolean equals(Object other) {
         if (!(other instanceof Position)) return false;
         Position that = (Position) other;

@@ -44,7 +44,13 @@ class TradingFloor extends Room {
     public void look() {
         System.out.println("A lot is going on this place with lots of computers—yet not one other Elf in sight!");
     }
-
+    
+    /**
+     * Registers asynchronous actions
+     * 
+     * @return 
+     */
+    @Override
     public List<Asynchronous> registerAsynchronous() {
         ArrayList<Asynchronous> result = new ArrayList<Asynchronous>();
         for (int i=stocks.size()-1; i>=0; i--) {

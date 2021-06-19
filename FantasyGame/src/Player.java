@@ -9,7 +9,6 @@ public class Player extends Entity {
     /**
      * Player constructor
      * 
-     * @param n
      * @param p 
      */
     public Player(Position p) {
@@ -95,11 +94,22 @@ public class Player extends Entity {
     public void printMap(Location location) {
         location.map(getPosition().getRoomX(), getPosition().getRoomY());
     }
-
+    
+    /**
+     * Checks whether there are room specific actions
+     * 
+     * @param location
+     * @return 
+     */
     public boolean roomActionExists(Location location) {
         return getRoom(location).getActions().size() > 0;
     }
-
+    
+    /**
+     * Prints room specific commands
+     * 
+     * @param location 
+     */
     public void printRoomHelp(Location location) {
         if (roomActionExists(location)) {
             System.out.println("===== Room specific commands =====");
@@ -108,7 +118,14 @@ public class Player extends Entity {
             }
         }
     }
-
+    
+    /**
+     * Executes room specific actions
+     * 
+     * @param location
+     * @param command
+     * @return 
+     */
     public boolean executeAction(Location location, String command) {
         for (Action action:getRoom(location).getActions()) {
             if (action.getCommand().equals(command)) {
@@ -119,6 +136,12 @@ public class Player extends Entity {
         return false;
     }
     
+    /**
+     * Fetches asynchronous actions
+     * 
+     * @param location
+     * @return 
+     */
     public List<Asynchronous> fetchAsynchronous(Location location) {
         return getRoom(location).registerAsynchronous();
     }

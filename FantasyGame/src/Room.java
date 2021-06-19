@@ -28,7 +28,9 @@ public class Room {
     /**
      * Allows the elf to enter the room and perform actions in it, if it can.
      * 
-     * @param elf 
+     * @param entity
+     * @param location
+     * @param verbose
      * @return
      */
     public boolean enter(Entity entity, Location location, boolean verbose) {
@@ -41,15 +43,30 @@ public class Room {
     public void look() {
         System.out.println("You look around... and see nothing.");
     }
-
+    
+    /**
+     * Adds action for a room
+     * 
+     * @param action 
+     */
     public void addAction(Action action) {
         actions.add(action);
     }
-
+    
+    /**
+     * Returns actions in a room
+     * 
+     * @return 
+     */
     public List<Action> getActions() {
         return actions;
     }
-
+    
+    /**
+     * Registers the asynchronous class
+     * 
+     * @return 
+     */
     public List<Asynchronous> registerAsynchronous() {
         return null;
     }

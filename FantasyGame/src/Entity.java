@@ -191,7 +191,6 @@ public class Entity {
     /**
      * Allows the entity to drink potions
      *
-     * @param amount
      * @return
      */
     public boolean drinkPotion() {

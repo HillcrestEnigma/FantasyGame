@@ -1,6 +1,19 @@
 import java.util.*;
 
+/**
+ * Utility class
+ * 
+ * @version 06-18-2021
+ * @author Jing Sun & Paul Lee
+ */
 public class Util {
+    
+    /**
+     * Returns the list of humans
+     * 
+     * @param items
+     * @return 
+     */
     public static String humanList(List<String> items) {
         String result = "";
         if (items.size() == 0) return result;
