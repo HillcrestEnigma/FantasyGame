@@ -159,6 +159,7 @@ public class Entity {
      * Sets the health of the entity
      * 
      * @param health
+     * @param location
      * @return 
      */
     public boolean setHealth(int health, Location location) {
@@ -176,6 +177,7 @@ public class Entity {
      * Allows the entity to take damage
      * 
      * @param damage
+     * @param location
      * @return 
      */
     public boolean takeDamage(int damage, Location location) {
@@ -185,7 +187,9 @@ public class Entity {
     /**
      * Teleports the entity to a new direction
      * 
-     * @param location 
+     * @param prevLoc
+     * @param newLoc
+     * @param verbose
      */
     public boolean teleport(Location prevLoc, Location newLoc, boolean verbose) {
         if (!prevLoc.exitRequirementMet(this, verbose)) return false;
@@ -200,6 +204,7 @@ public class Entity {
     /**
      * Allows the entity to drink potions
      *
+     * @param verbose
      * @return
      */
     public boolean drinkPotion(boolean verbose) {

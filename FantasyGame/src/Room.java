@@ -71,7 +71,12 @@ public class Room {
     public List<Asynchronous> registerAsynchronous() {
         return null;
     }
-
+    
+    /**
+     * Enables automatic picking up of items by default
+     * 
+     * @return 
+     */
     public boolean autoPickUpItems() {
         return true;
     }

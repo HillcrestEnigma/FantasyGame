@@ -1,5 +1,5 @@
 /**
- * A subclass of Room with extra properties as Castle rooms
+ * A subclass of Room with extra properties as rooms in the home
  * 
  * @version 06-18-2021
  * @author Jing Sun & Paul Lee
@@ -7,7 +7,7 @@
 class LivingRoom extends Room {
     
     /**
-     * Constructs a DarkRoom
+     * Constructs a LivingRoom
      * 
      * @param x The x co-ordinate of the room
      * @param y The y co-ordinate of the room
@@ -19,7 +19,7 @@ class LivingRoom extends Room {
     }
 	
     /**
-     * Have Elf interact with DarkRoom.
+     * Have Elf interact with LivingRoom
      *
      * @param elf
      */
@@ -29,7 +29,7 @@ class LivingRoom extends Room {
     }
     
     /**
-     * Allows the Elf to look around the dark room
+     * Allows the Elf to look around the living room
      */
     @Override
     public void look() {

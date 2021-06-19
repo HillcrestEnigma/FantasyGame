@@ -31,7 +31,7 @@ class TradingFloor extends Room {
     }
 
     /**
-     * Have Elf interact with DarkRoom.
+     * Have Elf interact with TradingFloor
      *
      * @param elf
      */
@@ -41,7 +41,7 @@ class TradingFloor extends Room {
     }
     
     /**
-     * Allows the Elf to look around the dark room
+     * Allows the Elf to look around the trading floor
      */
     @Override
     public void look() {
