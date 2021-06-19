@@ -19,7 +19,7 @@ public class MiningRoom extends Room {
      * @param radioactive 
      */
     public MiningRoom(int x, int y, int goldAmt, int chunks, boolean radioactive) {
-        super("Mine", x, y);
+        super("mine", x, y);
         this.radioactive = radioactive;
         inventory.addItem(new Item("Gold", goldAmt));
         inventory.addItem(new Item("Gold Chunk", chunks));
@@ -47,6 +47,7 @@ public class MiningRoom extends Room {
      */
     @Override
     public boolean enter(Entity entity, Location location, boolean verbose) {
+        location.addRoom(this);
         if (radioactive) {
             entity.takeDamage(5, location);
             if (verbose) System.out.println("You feel the radioactivity in the room. You take 5% health damage. Your new health level is " + entity.getHealth() + "%.\n");
