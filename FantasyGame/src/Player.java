@@ -48,6 +48,10 @@ public class Player extends Entity {
         room.enter(this, location, true);
 
         look(location);
+
+        if (roomActionExists(location)) {
+            System.out.println("\nThere are Room-specific commands available in this room. Type \"help\" to view them!");
+        }
     }
     
     /**
@@ -90,6 +94,29 @@ public class Player extends Entity {
      */
     public void printMap(Location location) {
         location.map(getPosition().getRoomX(), getPosition().getRoomY());
+    }
+
+    public boolean roomActionExists(Location location) {
+        return getRoom(location).getActions().size() > 0;
+    }
+
+    public void printRoomHelp(Location location) {
+        if (roomActionExists(location)) {
+            System.out.println("===== Room specific commands =====");
+            for (Action action:getRoom(location).getActions()) {
+                System.out.println(action.getCommand() + ": " + action.getDescription());
+            }
+        }
+    }
+
+    public boolean executeAction(Location location, String command) {
+        for (Action action:getRoom(location).getActions()) {
+            if (action.getCommand().equals(command)) {
+                action.perform(this, location);
+                return true;
+            }
+        }
+        return false;
     }
     
     /**

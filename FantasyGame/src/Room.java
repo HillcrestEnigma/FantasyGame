@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * A room superclass for the different rooms
  * 
@@ -8,6 +10,7 @@ public class Room {
     //Instance variables
     public Inventory inventory;
     public Position position;
+    private List<Action> actions;
     
     /**
      * Room constructor
@@ -19,6 +22,7 @@ public class Room {
     public Room(String location, int x, int y) {
         this.position = new Position(location, x, y);
         this.inventory = new Inventory();
+        this.actions = new ArrayList<Action>();
     }
     
     /**
@@ -36,5 +40,13 @@ public class Room {
      */
     public void look() {
         System.out.println("You look around... and see nothing.");
+    }
+
+    public void addAction(Action action) {
+        actions.add(action);
+    }
+
+    public List<Action> getActions() {
+        return actions;
     }
 }

@@ -85,6 +85,11 @@ public class Game {
                 System.out.println("move forward: Enter the room forward");
                 System.out.println("move behind: Enter the room behind");
                 System.out.println("goto home: Teleports you to your home");
+
+                if (player.roomActionExists(location)) {
+                    System.out.println();
+                    player.printRoomHelp(location);
+                }
             } else if (command.equals("exit")) {
                 break;
             } else if (command.equals("look")) {
@@ -108,7 +113,7 @@ public class Game {
             } else if (command.equals("goto home")) {
                 player.teleport(getLocationByName("home"));
             } else {
-                System.out.println("Wrong command. Type \"help\" to view a list of commands.");
+                if (!player.executeAction(location, command)) System.out.println("Wrong command. Type \"help\" to view a list of commands.");
             }
         }
 

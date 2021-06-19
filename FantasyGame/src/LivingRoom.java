@@ -14,6 +14,8 @@ class LivingRoom extends Room {
      */
     public LivingRoom(int x, int y) {
         super("home", x, y);
+
+        addAction(new PotionRestockAction());
     }
 	
     /**
