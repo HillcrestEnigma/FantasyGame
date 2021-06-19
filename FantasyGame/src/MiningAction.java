@@ -13,7 +13,7 @@ public class MiningAction extends Action {
      * Constructor for mining
      */
     public MiningAction() {
-        super("mine", "mines in mining rooms");
+        super("mine", "Mine for gold");
     }
     
     /**
@@ -48,8 +48,7 @@ public class MiningAction extends Action {
             if (ore < chunkQuantity) {
                 try {
                     Thread.sleep(5000);
-                    player.inventory.addItem(new Item("Gold Chunk"));
-                    player.getRoom(location).inventory.updateItemQuantity("Gold Chunk", -1);
+                    player.getRoom(location).inventory.give(player.inventory, "Gold Chunk", 1);
                     System.out.println("And find a gold chunk!");
                 }
                 catch (Exception e) {}
@@ -57,8 +56,7 @@ public class MiningAction extends Action {
             else {
                 try {
                     Thread.sleep(1000);
-                    player.inventory.addItem(new Item("Gold"));
-                    player.getRoom(location).inventory.updateItemQuantity("Gold", -1);
+                    player.getRoom(location).inventory.give(player.inventory, "Gold", 1);
                     System.out.println("and get a piece of gold.");
                 }
                 catch (Exception e) {}
