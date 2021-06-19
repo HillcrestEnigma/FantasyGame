@@ -1,6 +1,6 @@
 import java.util.*;
 /**
- * The actions of restocking potions
+ * The action of restocking potions
  * 
  * @version 06-18-2021
  * @author Jing Sun & Paul Lee
