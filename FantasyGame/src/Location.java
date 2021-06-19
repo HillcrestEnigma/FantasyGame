@@ -107,4 +107,12 @@ public class Location {
     public String getName() {
         return name;
     }
+
+    public boolean entryRequirementMet(Entity entity, boolean verbose) {
+        return true;
+    }
+
+    public boolean exitRequirementMet(Entity entity, boolean verbose) {
+        return true;
+    }
 }

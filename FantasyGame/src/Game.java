@@ -148,11 +148,11 @@ public class Game {
                 System.out.println("Moving...\n");
                 if (!player.moveBehind(location)) System.out.println("You can't enter the room behind!");
             } else if (command.equals("goto home")) {
-                player.teleport(getLocationByName("home"));
+                player.teleport(location, getLocationByName("home"), true);
             } else if (command.equals("goto castle")) {
-                player.teleport(getLocationByName("castle"));
+                player.teleport(location, getLocationByName("castle"), true);
             } else if (command.equals("goto stockexchange")) {
-                player.teleport(getLocationByName("stockexchange"));
+                player.teleport(location, getLocationByName("stockexchange"), true);
             } else {
                 if (!player.executeAction(location, command)) System.out.println("Wrong command. Type \"help\" to view a list of commands.");
             }

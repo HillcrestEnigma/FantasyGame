@@ -186,11 +186,14 @@ public class Entity {
      * 
      * @param location 
      */
-    public void teleport(Location location) {
-        position.setLocation(location.getName());
+    public boolean teleport(Location prevLoc, Location newLoc, boolean verbose) {
+        if (!prevLoc.exitRequirementMet(this, verbose)) return false;
+        if (!newLoc.entryRequirementMet(this, verbose)) return false;
+        position.setLocation(newLoc.getName());
         position.setRoomX(0);
         position.setRoomY(0);
-        enterRoom(location);
+        enterRoom(newLoc);
+        return true;
     }
 
     /**

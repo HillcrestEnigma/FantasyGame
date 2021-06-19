@@ -29,4 +29,13 @@ class Castle extends Location {
         }
 
     }
+
+    @Override
+    public boolean exitRequirementMet(Entity entity, boolean verbose) {
+        if (entity.getHealth() >= 25) return true;
+        else {
+            if (verbose) System.out.println("Your health must be at least 25%.");
+            return false;
+        }
+    }
 }
