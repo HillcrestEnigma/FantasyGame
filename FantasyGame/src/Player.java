@@ -2,15 +2,26 @@ import java.util.*;
 /**
  * This class represents the sole character of the game.
  *
- * @version 06-16-2021
+ * @version 06-18-2021
  * @author Jing Sun & Paul Lee
  */
 public class Player extends Entity {
+    /**
+     * Player constructor
+     * 
+     * @param n
+     * @param p 
+     */
     public Player(String n, Position p) {
         super(n, p);
         inventory.addItem(new Item("Potion"));
     }
-
+    
+    /**
+     * Allows the player to look around in a location
+     * 
+     * @param location 
+     */
     public void look(Location location) {
         getRoom(location).look();
 
@@ -39,7 +50,13 @@ public class Player extends Entity {
 
         pickUpItems(location);
     }
-
+    
+    /**
+     * Allows the player to enter a room
+     * 
+     * @param location 
+     */
+    @Override
     public void enterRoom(Location location) {
         Room room = getRoom(location);
         if (room instanceof DarkRoom) {
@@ -52,7 +69,12 @@ public class Player extends Entity {
 
         look(location);
     }
-
+    
+    /**
+     * Allows the player to pick up items
+     * 
+     * @param location 
+     */
     public void pickUpItems(Location location) {
         System.out.print("You find ");
         List<Item> items = getRoom(location).inventory.getItems();
@@ -65,7 +87,10 @@ public class Player extends Entity {
         System.out.println(" in the room.");
         inventory.expand(getRoom(location).inventory);
     }
-
+    
+    /**
+     * Prints the status of the player, such as its health
+     */
     public void printStatus() {
         System.out.println("===== Status =====");
         System.out.println("Health: " + getHealth() + "%");
@@ -78,10 +103,21 @@ public class Player extends Entity {
         } else System.out.println("There is nothing in your inventory. :(");
     }
     
+    /**
+     * Prints a map of the location the player is currently in
+     * 
+     * @param location 
+     */
     public void printMap(Location location) {
         location.map(getPosition().getRoomX(), getPosition().getRoomY());
     }
     
+    /**
+     * Allows the player to drink potions
+     * 
+     * @param amount
+     * @return 
+     */
     public boolean drinkPotion(int amount) {
         if (getHealth() == 100) return false;
         else {

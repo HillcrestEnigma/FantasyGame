@@ -1,18 +1,28 @@
 import java.util.List;
 import java.util.ArrayList;
 /**
- * This is an interface for locations in the games
+ * This is an superclass for the locations in the game
  * 
- * @version 06-16-2021
- * @author JingKun
+ * @version 06-18-2021
+ * @author Jing Sun & Paul Lee
  */
 public class Location {
+    //Instance variables
     private List<Room> rooms;
-
+    
+    /**
+     * Location constructor
+     */
     public Location() {
         rooms = new ArrayList<Room>();
     }
-
+    
+    /**
+     * Adds rooms to the location
+     * 
+     * @param room
+     * @return 
+     */
     public boolean addRoom(Room room) {
         for (int i=0; i<rooms.size(); i++) {
             if (rooms.get(i).position.equals(room.position)) return false;
@@ -20,7 +30,14 @@ public class Location {
         rooms.add(room);
         return true;
     }
-
+    
+    /**
+     * Returns a room from the location when given coordinates
+     * 
+     * @param x
+     * @param y
+     * @return 
+     */
     public Room getRoom(int x, int y) {
         for (Room room:rooms) {
             if (room.position.getRoomX() == x && room.position.getRoomY() == y) {
@@ -29,11 +46,22 @@ public class Location {
         }
         return null;
     }
-
+    
+    /**
+     * Returns the amount of rooms in the location
+     * 
+     * @return 
+     */
     public int getSize() {
         return rooms.size();
     }
     
+    /**
+     * Generates a map of the location
+     * 
+     * @param x
+     * @param y 
+     */
     public void map(int x, int y) {
         int minX = Integer.MAX_VALUE;
         int minY = Integer.MAX_VALUE;
@@ -48,7 +76,7 @@ public class Location {
         char[][] map = new char[maxY-minY+1][maxX-minX+1];
         for (int i = 0; i < maxY-minY+1; i++) {
             for (int j = 0; j < maxX-minX+1; j++) {
-                map[i][j] = '.';
+                map[i][j] = ' ';
             }
         }
         for (Room room:rooms) {

@@ -5,13 +5,21 @@ import java.util.Random; // https://www.tutorialspoint.com/java/util/java_util_r
  * This class is responsible for constructing levels and coordinating interaction of
  * Elves with Darkrooms.  
  *
+ * @version 06-18-2021
+ * @author Jing Sun & Paul Lee
  */
 public class Game {
+    //Instance variables
     private long seed;
     private Random rng;
     private Castle castle;
     private Player player;
-
+    
+    /**
+     * Game constructor
+     * 
+     * @param seed 
+     */
     public Game(String seed) {
         // https://www.tutorialspoint.com/java/java_string_hashcode.htm
         this.seed = (long) seed.hashCode();
@@ -20,7 +28,13 @@ public class Game {
         this.castle = new Castle(this.rng.nextLong());
         this.player = new Player("Player", new Position("castle", 0, 0));
     }
-
+    
+    /**
+     * Returns location when given name
+     * 
+     * @param name
+     * @return 
+     */
     private Location getLocationByName(String name) {
         if (name.equals("castle")) {
             return this.castle;
@@ -28,7 +42,10 @@ public class Game {
             return null;
         }
     }
-
+    
+    /**
+     * Plays the game out in the console
+     */
     public void play() {
         Scanner scanner = new Scanner(System.in);
         String command;
