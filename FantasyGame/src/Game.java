@@ -75,6 +75,7 @@ public class Game {
         // player.look(location);
 
         while (true) {
+            //Checks if the player won
             if (player.inventory.getItem("Gold") != null && player.inventory.getItem("Gold").quantity >= 1000) {
                 System.out.println("You beat the game!");
                 return;
@@ -106,7 +107,7 @@ public class Game {
             System.out.print("\n> ");
             command = scanner.nextLine();
             System.out.println();
-
+            //Commands
             if (command.equals("help")) {
                 System.out.println("===== Help =====");
                 System.out.println("help: View this very helpful help message");

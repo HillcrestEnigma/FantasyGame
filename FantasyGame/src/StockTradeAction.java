@@ -1,14 +1,31 @@
 import java.util.*;
-
+/**
+ * The action of trading stock
+ * 
+ * @version 06-18-2021
+ * @author Jing Sun & Paul Lee
+ */
 public class StockTradeAction extends Action {
+    //Instance variables
     private List<Stock> stocks;
-
+    
+    /**
+     * StockTradeAction constructor
+     * @param stocks 
+     */
     public StockTradeAction(List<Stock> stocks) {
         super("trade", "Trade stocks");
         this.stocks = new ArrayList<Stock>();
         for (Stock stock:stocks) this.stocks.add(stock);
     }
-
+    
+    /**
+     * Performs the action
+     * 
+     * @param player
+     * @param location 
+     */
+    @Override
     public void perform(Player player, Location location) {
         System.out.println("Loading the automated stock broker...\n");
         System.out.println("Welcome to the Stock Exchange!");

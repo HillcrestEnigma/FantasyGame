@@ -43,6 +43,7 @@ public class Item {
      * @param other
      * @return 
      */
+    @Override
     public boolean equals(Object other) {
         if (!(other instanceof Item)) return false;
         Item that = (Item) other;

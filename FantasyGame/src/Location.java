@@ -98,7 +98,12 @@ public class Location {
         for (int i = 0; i < map[0].length + 2; i++) System.out.print("-");
         System.out.println("\nx = Rooms\nO = Your Location\nE = Entrance");
     }
-
+    
+    /**
+     * Returns the name of the location
+     * 
+     * @return 
+     */
     public String getName() {
         return name;
     }

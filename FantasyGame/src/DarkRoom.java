@@ -68,11 +68,19 @@ class DarkRoom extends Room {
     public boolean isRadioactive() {
         return radioactive;
     }
-
+    
+    /**
+     * Returns whether the room has been looted by rival elf or not
+     * 
+     * @return 
+     */
     public boolean getLootedByRivalElf() {
         return lootedByRivalElf;
     }
-
+    
+    /**
+     * Allows the room to be looted by rival elf
+     */
     public void lootAsRivalElf() {
         lootedByRivalElf = true;
     }
