@@ -108,11 +108,25 @@ public class Location {
     public String getName() {
         return name;
     }
-
+    
+    /**
+     * Returns that the entry requirements are met
+     * 
+     * @param entity
+     * @param verbose
+     * @return 
+     */
     public boolean entryRequirementMet(Entity entity, boolean verbose) {
         return true;
     }
-
+    
+    /**
+     * Returns that the exit requirements are met
+     * 
+     * @param entity
+     * @param verbose
+     * @return 
+     */
     public boolean exitRequirementMet(Entity entity, boolean verbose) {
         return true;
     }
