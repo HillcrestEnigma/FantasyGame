@@ -6,20 +6,34 @@ import java.util.Random;
  * @author Jing Sun & Paul Lee
  */
 public class Mine extends Location {
+    private long seed;
+
     public Mine (long seed) {
         super("mine");
-        Random rng = new Random(seed);
-        int x = 0;
-        int y = 0;
-        int direction;
-        addRoom(new DarkRoom(0, 0, rng.nextLong()));
-        while (getSize() < 25) {
-            direction = rng.nextInt(4);
-            if (direction == 0) x++;
-            else if (direction == 1) x--;
-            else if (direction == 2) y++;
-            else y--;
-            addRoom(new DarkRoom(x, y, rng.nextLong()));
-        }
+        this.seed = seed;
+        addRoom(new MiningRoom(0, 0, seed));
+    }
+
+    public Room getRoom(int x, int y) {
+        Room room = super.getRoom(x, y);
+        if (room != null) return room;
+
+        Random rng;
+
+        int numXCycle = Math.abs(x)*2;
+        if (x > 0) numXCycle--;
+
+        rng = new Random(seed);
+        long rowSeed = seed;
+        for (int i=0; i<numXCycle; i++) rowSeed = rng.nextLong();
+
+        int numYCycle = Math.abs(y)*2;
+        if (y > 0) numYCycle--;
+
+        rng = new Random(rowSeed);
+        long roomSeed = rowSeed;
+        for (int i=0; i<numYCycle; i++) roomSeed = rng.nextLong();
+
+        return new MiningRoom(x, y, roomSeed);
     }
 }

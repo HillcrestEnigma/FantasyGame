@@ -13,9 +13,12 @@ public class Game {
     //Instance variables
     private long seed;
     private Random rng;
+
     private Castle castle;
     private Home home;
     private StockExchange stockexchange;
+    private Mine mine;
+
     private Player player;
     private List<Asynchronous> asyncList;
     private long asyncLastUpdate;
@@ -33,6 +36,8 @@ public class Game {
         this.castle = new Castle(this.rng.nextLong());
         this.home = new Home();
         this.stockexchange = new StockExchange(this.rng.nextLong());
+        this.mine = new Mine(this.rng.nextLong());
+
         this.player = new Player(new Position("castle", 0, 0));
         this.asyncList = new ArrayList<Asynchronous>();
         this.asyncLastUpdate = System.currentTimeMillis();
@@ -53,6 +58,8 @@ public class Game {
             return this.home;
         } else if (name.equals("stockexchange")) {
             return this.stockexchange;
+        } else if (name.equals("mine")) {
+            return this.mine;
         } else {
             return null;
         }
@@ -122,6 +129,7 @@ public class Game {
                 System.out.println("goto home: Teleports you to your home");
                 System.out.println("goto castle: Teleports you to the castle");
                 System.out.println("goto stockexchange: Teleports you to the stock exchange");
+                System.out.println("goto mine: Teleports you to the mine");
                 System.out.println("drink potion: Drink a potion from your inventory");
 
                 if (player.roomActionExists(location)) {
@@ -154,6 +162,8 @@ public class Game {
                 player.teleport(location, getLocationByName("castle"), true);
             } else if (command.equals("goto stockexchange")) {
                 player.teleport(location, getLocationByName("stockexchange"), true);
+            } else if (command.equals("goto mine")) {
+                player.teleport(location, getLocationByName("mine"), true);
             } else if (command.equals("drink potion")) {
                 player.drinkPotion(true);
             } else {
