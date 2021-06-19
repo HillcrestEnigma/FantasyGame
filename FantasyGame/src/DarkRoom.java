@@ -1,10 +1,17 @@
-import java.util.ArrayList;
 import java.util.Random; // https://www.tutorialspoint.com/java/util/java_util_random.htm
+/**
+ * A subclass of Room with extra properties as Castle rooms
+ * 
+ * @version 06-18-2021
+ * @author Jing Sun & Paul Lee
+ */
 class DarkRoom extends Room {
+    //Instance variable
     private boolean radioactive;
 	
     /**
      * Constructs a DarkRoom
+     * 
      * @param x The x co-ordinate of the room
      * @param y The y co-ordinate of the room
      * @param goldAmt The amount of the gold.
@@ -15,7 +22,13 @@ class DarkRoom extends Room {
 	this.radioactive = radioactive;
         inventory.addItem(new Item("Gold", goldAmt));
     }
-
+    /**
+     * Overloaded DarkRoom constructor
+     * 
+     * @param x
+     * @param y
+     * @param seed 
+     */
     public DarkRoom(int x, int y, long seed) {
         this(x, y, 5, false);
         Random rng = new Random(seed);
@@ -28,14 +41,24 @@ class DarkRoom extends Room {
      *
      * @param elf
      */
+    @Override
     public boolean enter(Entity entity) {
         return true;
     }
-
+    
+    /**
+     * Allows the Elf to look around the dark room
+     */
+    @Override
     public void look() {
         System.out.println("The room is very dark, and you make out only a few details.");
     }
-
+    
+    /**
+     * Returns whether the DarkRoom is radioactive or not
+     * 
+     * @return radioactive
+     */
     public boolean isRadioactive() {
         return radioactive;
     }

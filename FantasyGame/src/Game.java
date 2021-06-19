@@ -5,13 +5,21 @@ import java.util.Random; // https://www.tutorialspoint.com/java/util/java_util_r
  * This class is responsible for constructing levels and coordinating interaction of
  * Elves with Darkrooms.  
  *
+ * @version 06-18-2021
+ * @author Jing Sun & Paul Lee
  */
 public class Game {
+    //Instance variables
     private long seed;
     private Random rng;
     private Castle castle;
     private Player player;
-
+    
+    /**
+     * Game constructor
+     * 
+     * @param seed 
+     */
     public Game(String seed) {
         // https://www.tutorialspoint.com/java/java_string_hashcode.htm
         this.seed = (long) seed.hashCode();
@@ -20,7 +28,13 @@ public class Game {
         this.castle = new Castle(this.rng.nextLong());
         this.player = new Player("Player", new Position("castle", 0, 0));
     }
-
+    
+    /**
+     * Returns location when given name
+     * 
+     * @param name
+     * @return 
+     */
     private Location getLocationByName(String name) {
         if (name.equals("castle")) {
             return this.castle;
@@ -28,7 +42,10 @@ public class Game {
             return null;
         }
     }
-
+    
+    /**
+     * Plays the game out in the console
+     */
     public void play() {
         Scanner scanner = new Scanner(System.in);
         String command;
@@ -58,6 +75,9 @@ public class Game {
                 System.out.println("move right: Enter the room to the right");
                 System.out.println("move forward: Enter the room forward");
                 System.out.println("move behind: Enter the room behind");
+                System.out.println("teleport home: Teleports you home. Only"
+                        + " functional at a location entrance");
+                System.out.println("restock: Restocks your potions for a max of 5");
             } else if (command.equals("exit")) {
                 break;
             } else if (command.equals("look")) {
@@ -78,6 +98,15 @@ public class Game {
             } else if (command.equals("move behind")) {
                 System.out.println("Moving...\n");
                 if (!player.moveBehind(location)) System.out.println("You can't enter the room behind!");
+            } else if (command.equals("teleport home")) {
+                if (player.getPosition().getRoomX() == 0 && player.getPosition().getRoomY() == 0) {
+                    player.teleport("Home");
+                    System.out.println("Yoou have teleported home.");
+                }
+                else System.out.println("You are not at the entrance!");
+            } else if (command.equals("restock")) {
+                if (player.stockPotion()) System.out.println("You restocked you potions.");
+                else System.out.println("You're not at home!");
             } else {
                 System.out.println("Wrong command. Type \"help\" to view a list of commands.");
             }
