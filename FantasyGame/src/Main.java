@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /**
  * Runs the game
  * 
@@ -11,7 +12,11 @@ public class Main {
      * @param args 
      */
     public static void main(String[] args) {
-        Game game = new Game("This is a test");
+        String seed;
+        System.out.println("Enter a seed: ");
+        Scanner scanner = new Scanner(System.in);
+        seed = scanner.nextLine();
+        Game game = new Game(seed);
         game.play();
     }
 }

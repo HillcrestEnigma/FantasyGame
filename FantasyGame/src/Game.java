@@ -75,6 +75,9 @@ public class Game {
                 System.out.println("move right: Enter the room to the right");
                 System.out.println("move forward: Enter the room forward");
                 System.out.println("move behind: Enter the room behind");
+                System.out.println("teleport home: Teleports you home. Only"
+                        + " functional at a location entrance");
+                System.out.println("restock: Restocks your potions for a max of 5");
             } else if (command.equals("exit")) {
                 break;
             } else if (command.equals("look")) {
@@ -95,6 +98,10 @@ public class Game {
             } else if (command.equals("move behind")) {
                 System.out.println("Moving...\n");
                 if (!player.moveBehind(location)) System.out.println("You can't enter the room behind!");
+            } else if (command.equals("teleport home")) {
+                player.teleport("Home");
+            } else if (command.equals("restock")) {
+                player.stockPotion();
             } else {
                 System.out.println("Wrong command. Type \"help\" to view a list of commands.");
             }
