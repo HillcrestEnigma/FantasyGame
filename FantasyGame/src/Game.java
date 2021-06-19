@@ -58,8 +58,19 @@ public class Game {
         // player.look(location);
 
         while (true) {
+            boolean gameOver = false;
+            for(Item item:player.inventory.getItems()) {
+                if (item.getName().equals("Gold")) {
+                    if(item.quantity >= 1000) {
+                        System.out.println("You beat the game!");
+                        gameOver = true;
+                        break;
+                    }
+                }
+            }
+            if (gameOver) break;
             location = getLocationByName(player.getPosition().getLocation());
-
+            
             System.out.print("\n> ");
             command = scanner.nextLine();
             System.out.println();
