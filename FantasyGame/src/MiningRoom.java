@@ -38,6 +38,7 @@ public class MiningRoom extends Room {
         inventory.addItem(new Item("Gold", rng.nextInt(20)));
         inventory.addItem(new Item("Gold Chunk", rng.nextInt(1)));
         radioactive = rng.nextInt(100) < 25;
+        addAction(new MiningAction());
     }
     
     /**
