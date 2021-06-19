@@ -8,6 +8,9 @@ import java.util.*;
 public class RivalElf extends Entity implements Asynchronous {
     Random rng;
     boolean introducedItself = false;
+    boolean sameRoomPlayerNotice = false;
+    boolean exitedCastle = false;
+    int noGoldStreak = 0;
     /**
      * Player constructor
      * 
@@ -21,6 +24,7 @@ public class RivalElf extends Entity implements Asynchronous {
     }
 
     public String tick(Player player, Location location) {
+        if (exitedCastle) return null;
         if (!introducedItself && player.getPosition().equals(this.getPosition())) {
             introducedItself = true;
             return "As you look around, you see another elf looking for gold.\n"
@@ -31,12 +35,41 @@ public class RivalElf extends Entity implements Asynchronous {
                 + "Before you can say anything, the elf runs into the next room,\n"
                 + "and you can hear a sinister laughter in the distance.";
         }
+
+        if (!sameRoomPlayerNotice && player.getPosition().equals(this.getPosition())) {
+            sameRoomPlayerNotice = true;
+            return "You look around, you find the elf yet again.\n"
+                + "It looks up, and laughs as it runs into another room.";
+        }
+
+        if (getHealth() == 25) {
+            if (!drinkPotion()) {
+                exitedCastle = true;
+                return "You find the elf again.\n"
+                    + "\"You are quite a lucky one to have me run out of potions.\",\n"
+                    + "the elf says, before teleporting out of the castle.";
+            }
+        }
+
+        if (noGoldStreak > 19) {
+            exitedCastle = true;
+            return "You find the elf again.\n"
+                + "\"I think I've looted everything in this castle, so see you later!\",\n"
+                + "the elf says, before teleporting out of the castle.";
+        }
+
         if (rng.nextInt(5) == 0) {
             int direction = rng.nextInt(4);
-            if (direction == 0) moveForward(location);
-            else if (direction == 1) moveBehind(location);
-            else if (direction == 2) moveRight(location);
-            else moveLeft(location);
+            boolean moveResult;
+            if (direction == 0) moveResult = moveForward(location);
+            else if (direction == 1) moveResult = moveBehind(location);
+            else if (direction == 2) moveResult = moveRight(location);
+            else moveResult = moveLeft(location);
+            if (moveResult) {
+                sameRoomPlayerNotice = false;
+                Room room = getRoom(location);
+                if (room.inventory.size() == 0) noGoldStreak++;
+            }
         }
 
         if (rng.nextInt(100) == 0) {
@@ -70,22 +103,5 @@ public class RivalElf extends Entity implements Asynchronous {
     public void pickUpItems(Location location) {
         List<Item> items = getRoom(location).inventory.getItems();
         inventory.expand(getRoom(location).inventory);
-    }
-    
-    /**
-     * Allows the player to drink potions
-     * 
-     * @param amount
-     * @return 
-     */
-    public boolean drinkPotion(int amount) {
-        if (getHealth() == 100) return false;
-        else {
-            int newHealth = getHealth() + amount * 10;
-            if (newHealth > 100) setHealth(100);
-            else setHealth(newHealth);
-            inventory.updateItemQuantity("Potion", -1 * amount);
-            return true;
-        }
     }
 }

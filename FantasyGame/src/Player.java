@@ -119,23 +119,6 @@ public class Player extends Entity {
         return false;
     }
     
-    /**
-     * Allows the player to drink potions
-     * 
-     * @param amount
-     * @return 
-     */
-    public boolean drinkPotion(int amount) {
-        if (getHealth() == 100) return false;
-        else {
-            int newHealth = getHealth() + amount * 10;
-            if (newHealth > 100) setHealth(100);
-            else setHealth(newHealth);
-            inventory.updateItemQuantity("Potion", -1 * amount);
-            return true;
-        }
-    }
-
     public List<Asynchronous> fetchAsynchronous(Location location) {
         return getRoom(location).registerAsynchronous();
     }
