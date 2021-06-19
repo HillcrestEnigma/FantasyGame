@@ -135,5 +135,8 @@ public class Player extends Entity {
             return true;
         }
     }
-   
+
+    public List<Asynchronous> fetchAsynchronous(Location location) {
+        return getRoom(location).registerAsynchronous();
+    }
 }

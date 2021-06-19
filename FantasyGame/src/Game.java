@@ -1,5 +1,6 @@
-import java.util.Scanner;
-import java.util.Random; // https://www.tutorialspoint.com/java/util/java_util_random.htm
+// https://www.tutorialspoint.com/java/util/java_util_random.htm
+// https://stackoverflow.com/questions/732034/getting-unixtime-in-java
+import java.util.*;
 
 /**
  * This class is responsible for constructing levels and coordinating interaction of
@@ -14,7 +15,10 @@ public class Game {
     private Random rng;
     private Castle castle;
     private Home home;
+    private StockExchange stockexchange;
     private Player player;
+    private List<Asynchronous> asyncList;
+    private long asyncLastUpdate;
     
     /**
      * Game constructor
@@ -28,7 +32,10 @@ public class Game {
 
         this.castle = new Castle(this.rng.nextLong());
         this.home = new Home();
+        this.stockexchange = new StockExchange(this.rng.nextLong());
         this.player = new Player("Player", new Position("castle", 0, 0));
+        this.asyncList = new ArrayList<Asynchronous>();
+        this.asyncLastUpdate = System.currentTimeMillis();
     }
     
     /**
@@ -42,6 +49,8 @@ public class Game {
             return this.castle;
         } else if (name.equals("home")) {
             return this.home;
+        } else if (name.equals("stockexchange")) {
+            return this.stockexchange;
         } else {
             return null;
         }
@@ -53,6 +62,8 @@ public class Game {
     public void play() {
         Scanner scanner = new Scanner(System.in);
         String command;
+        List<Asynchronous> newAsync;
+        long timeDeltaSinceAsyncLastUpdate;
         Location location = getLocationByName(player.getPosition().getLocation());
 
         System.out.println("Welcome to Fantasy!");
@@ -69,6 +80,19 @@ public class Game {
 
             location = getLocationByName(player.getPosition().getLocation());
             
+            newAsync = player.fetchAsynchronous(location);
+            if (newAsync != null) {
+                for (Asynchronous async:newAsync) {
+                    asyncList.add(async);
+                }
+            }
+
+            timeDeltaSinceAsyncLastUpdate = System.currentTimeMillis() - asyncLastUpdate;
+            asyncLastUpdate = System.currentTimeMillis();
+            for (int i=0; i < timeDeltaSinceAsyncLastUpdate / 500L; i++) {
+                for (Asynchronous async:asyncList) async.tick();
+            }
+
             System.out.print("\n> ");
             command = scanner.nextLine();
             System.out.println();
@@ -85,6 +109,8 @@ public class Game {
                 System.out.println("move forward: Enter the room forward");
                 System.out.println("move behind: Enter the room behind");
                 System.out.println("goto home: Teleports you to your home");
+                System.out.println("goto castle: Teleports you to the castle");
+                System.out.println("goto stockexchange: Teleports you to the stock exchange");
 
                 if (player.roomActionExists(location)) {
                     System.out.println();
@@ -112,6 +138,10 @@ public class Game {
                 if (!player.moveBehind(location)) System.out.println("You can't enter the room behind!");
             } else if (command.equals("goto home")) {
                 player.teleport(getLocationByName("home"));
+            } else if (command.equals("goto castle")) {
+                player.teleport(getLocationByName("castle"));
+            } else if (command.equals("goto stockexchange")) {
+                player.teleport(getLocationByName("stockexchange"));
             } else {
                 if (!player.executeAction(location, command)) System.out.println("Wrong command. Type \"help\" to view a list of commands.");
             }

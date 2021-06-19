@@ -49,4 +49,8 @@ public class Room {
     public List<Action> getActions() {
         return actions;
     }
+
+    public List<Asynchronous> registerAsynchronous() {
+        return null;
+    }
 }

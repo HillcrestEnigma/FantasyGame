@@ -1,8 +1,8 @@
 import java.util.*;
 
-public class Stock {
+public class Stock implements Asynchronous {
     private String ticker;
-    private float price;
+    private int price;
     private Random rng;
     private int streak = 0;
     private boolean isBull = true;
@@ -23,5 +23,13 @@ public class Stock {
         streak--;
         if (isBull) price += rng.nextInt(2);
         else price -= rng.nextInt(2);
+    }
+
+    public String ticker() {
+        return ticker;
+    }
+
+    public int getPrice() {
+        return price;
     }
 }

@@ -1,4 +1,3 @@
-import java.util.Random; // https://www.tutorialspoint.com/java/util/java_util_random.htm
 /**
  * A subclass of Room with extra properties as Castle rooms
  * 
