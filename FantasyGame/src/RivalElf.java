@@ -34,6 +34,7 @@ public class RivalElf extends Entity implements Asynchronous {
      */
     public String tick(Player player, Location location) {
         if (exitedCastle) return null;
+        if (!isAlive) return null;
         if (!introducedItself && player.getPosition().equals(this.getPosition())) {
             introducedItself = true;
             return "As you look around, you see another elf looking for gold.\n"

@@ -32,7 +32,7 @@ public class Player extends Entity {
         if (directions.size() == 0) System.out.println("\nThere are no adjacent rooms. Looks like you are surrounded!\n");
         else System.out.println("\nFrom this room you can enter the room " + Util.humanList(directions) + ".\n");
 
-        pickUpItems(location);
+        if (isAlive) pickUpItems(location);
     }
     
     /**

@@ -10,6 +10,7 @@ public class Entity {
     private String name;
     public Inventory inventory = new Inventory();
     private int health = 100;
+    public boolean isAlive = true;
     
     /**
      * Entity constructor
@@ -159,9 +160,13 @@ public class Entity {
      * @param health
      * @return 
      */
-    public boolean setHealth(int health) {
+    public boolean setHealth(int health, Location location) {
         if (0 <= health && health <= 100) {
             this.health = health;
+            if (health == 0) {
+                isAlive = false;
+                getRoom(location).inventory.expand(this.inventory);
+            }
             return true;
         } else return false;
     }
@@ -172,8 +177,8 @@ public class Entity {
      * @param damage
      * @return 
      */
-    public boolean takeDamage(int damage) {
-        return setHealth(health - damage);
+    public boolean takeDamage(int damage, Location location) {
+        return setHealth(health - damage, location);
     }
     
     /**

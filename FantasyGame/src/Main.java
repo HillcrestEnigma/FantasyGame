@@ -16,6 +16,9 @@ public class Main {
         System.out.print("Enter a seed: ");
         Scanner scanner = new Scanner(System.in);
         seed = scanner.nextLine();
+
+        System.out.println();
+
         Game game = new Game(seed);
         game.play();
     }
