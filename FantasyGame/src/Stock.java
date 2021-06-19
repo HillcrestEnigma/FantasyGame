@@ -62,4 +62,8 @@ public class Stock implements Asynchronous {
     public int getPrice() {
         return price;
     }
+
+    public String getAsynchronousLocationContext() {
+        return "stockexchange";
+    }
 }
