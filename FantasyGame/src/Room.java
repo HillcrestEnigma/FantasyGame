@@ -70,4 +70,8 @@ public class Room {
     public List<Asynchronous> registerAsynchronous() {
         return null;
     }
+
+    public boolean autoPickUpItems() {
+        return true;
+    }
 }

@@ -98,7 +98,7 @@ public class RivalElf extends Entity implements Asynchronous {
         Room room = getRoom(location);
         room.enter(this, location, false);
 
-        pickUpItems(location);
+        if (isAlive && room.autoPickUpItems()) pickUpItems(location);
         if (room instanceof DarkRoom) {
             DarkRoom darkroom = (DarkRoom) room;
             darkroom.lootAsRivalElf();

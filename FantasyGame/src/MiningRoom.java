@@ -71,4 +71,8 @@ public class MiningRoom extends Room {
     public boolean isRadioactive() {
         return radioactive;
     }
+
+    public boolean autoPickUpItems() {
+        return false;
+    }
  }

@@ -22,7 +22,8 @@ public class Player extends Entity {
      * @param location 
      */
     public void look(Location location) {
-        getRoom(location).look();
+        Room room = getRoom(location)
+        room.look();
 
         ArrayList<String> directions = new ArrayList<String>();
         if (canMoveLeft(location)) directions.add("to the left");
@@ -32,7 +33,7 @@ public class Player extends Entity {
         if (directions.size() == 0) System.out.println("\nThere are no adjacent rooms. Looks like you are surrounded!\n");
         else System.out.println("\nFrom this room you can enter the room " + Util.humanList(directions) + ".\n");
 
-        if (isAlive) pickUpItems(location);
+        if (isAlive && room.autoPickUpItems()) pickUpItems(location);
     }
     
     /**
