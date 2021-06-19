@@ -33,9 +33,9 @@ public class MiningRoom extends Room {
      * @param seed 
      */
     public MiningRoom(int x, int y, long seed) {
-        this(x, y, 30, 1, false);
+        this(x, y, 20, 1, false);
         Random rng = new Random(seed);
-        inventory.addItem(new Item("Gold", rng.nextInt(30)));
+        inventory.addItem(new Item("Gold", rng.nextInt(20)));
         inventory.addItem(new Item("Gold Chunk", rng.nextInt(1)));
         radioactive = rng.nextInt(100) < 25;
     }
