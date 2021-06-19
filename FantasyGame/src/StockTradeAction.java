@@ -99,7 +99,9 @@ public class StockTradeAction extends Action {
                         System.out.print("\nSelling one share of " + ticker + "... ");
                         boolean successful = player.inventory.updateItemQuantity(ticker + " Share", -1);
                         if (successful) {
-                            player.inventory.updateItemQuantity("Gold", stocks.get(i).getPrice());
+                            if (!player.inventory.updateItemQuantity("Gold", stocks.get(i).getPrice())) {
+                                player.inventory.addItem(new Item("Gold", stocks.get(i).getPrice()));
+                            }
                             System.out.println("Successful!");
                         } else System.out.println("You do not own a share of " + ticker + ".");
                         break;

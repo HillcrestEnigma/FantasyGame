@@ -30,7 +30,7 @@ public class Player extends Entity {
         if (canMoveRight(location)) directions.add("to the right");
         if (canMoveForward(location)) directions.add("forward");
         if (canMoveBehind(location)) directions.add("behind");
-        if (directions.size() == 0) System.out.println("\nThere are no adjacent rooms. Looks like you are surrounded!\n");
+        if (directions.size() == 0) System.out.println("\nThere are no adjacent rooms. Looks like you are surrounded!");
         else System.out.println("\nFrom this room you can enter the room " + Util.humanList(directions) + ".");
 
         if (isAlive && room.autoPickUpItems()) {
