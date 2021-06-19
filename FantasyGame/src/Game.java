@@ -99,9 +99,14 @@ public class Game {
                 System.out.println("Moving...\n");
                 if (!player.moveBehind(location)) System.out.println("You can't enter the room behind!");
             } else if (command.equals("teleport home")) {
-                player.teleport("Home");
+                if (player.getPosition().getRoomX() == 0 && player.getPosition().getRoomY() == 0) {
+                    player.teleport("Home");
+                    System.out.println("Yoou have teleported home.");
+                }
+                else System.out.println("You are not at the entrance!");
             } else if (command.equals("restock")) {
-                player.stockPotion();
+                if (player.stockPotion()) System.out.println("You restocked you potions.");
+                else System.out.println("You're not at home!");
             } else {
                 System.out.println("Wrong command. Type \"help\" to view a list of commands.");
             }
