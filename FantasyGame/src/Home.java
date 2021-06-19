@@ -8,7 +8,4 @@ public class Home extends Location {
     public Home() {
         addRoom(new Room("Home", 0, 0));
     }
-    public void restockPotion() {
-    
-    }
 }

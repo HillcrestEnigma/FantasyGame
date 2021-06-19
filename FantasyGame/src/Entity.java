@@ -88,4 +88,12 @@ public class Entity {
         position.setRoomX(0);
         position.setRoomY(0);
     }
+    
+    public boolean stockPotion() { 
+        if (position.getLocation().equals("Home")) {
+            inventory.setItemQuantity("Potion", 5);
+            return true;
+        }
+        else return false;
+    }
 }

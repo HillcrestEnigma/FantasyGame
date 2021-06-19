@@ -92,8 +92,5 @@ public class Player extends Entity {
             return true;
         }
     }
-    
-    public void stockPotion() {
-        inventory.setItemQuantity("Potion", 5);
-    }
+   
 }
