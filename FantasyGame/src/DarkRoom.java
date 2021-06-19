@@ -45,7 +45,7 @@ class DarkRoom extends Room {
     @Override
     public boolean enter(Entity entity, Location location, boolean verbose) {
         if (radioactive) {
-            entity.takeDamage(5);
+            entity.takeDamage(5, location);
             if (verbose) System.out.println("You feel the radioactivity in the room. You take 5% health damage. Your new health level is " + entity.getHealth() + "%.\n");
         }
         return true;

@@ -75,8 +75,13 @@ public class Game {
         // player.look(location);
 
         while (true) {
-            if (player.inventory.getItem("Gold").quantity >= 1000) {
+            if (player.inventory.getItem("Gold") != null && player.inventory.getItem("Gold").quantity >= 1000) {
                 System.out.println("You beat the game!");
+                return;
+            }
+            
+            if (!player.isAlive) {
+                System.out.println("Your health reached zero and you died!");
                 return;
             }
 
