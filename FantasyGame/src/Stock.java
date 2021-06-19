@@ -11,6 +11,7 @@ public class Stock implements Asynchronous {
         rng = new Random(seed);
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         int idx;
+        ticker = "";
         for (int i=0; i<4; i++) {
             idx = rng.nextInt(26);
             ticker += alphabet.substring(idx, idx+1);
@@ -25,7 +26,7 @@ public class Stock implements Asynchronous {
         else price -= rng.nextInt(2);
     }
 
-    public String ticker() {
+    public String getTicker() {
         return ticker;
     }
 
