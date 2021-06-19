@@ -114,7 +114,12 @@ public class RivalElf extends Entity implements Asynchronous {
         List<Item> items = getRoom(location).inventory.getItems();
         inventory.expand(getRoom(location).inventory);
     }
-
+    
+    /**
+     * Retrieves location of rival elf
+     * 
+     * @return 
+     */
     public String getAsynchronousLocationContext() {
         return "castle";
     }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * @author Jing Sun & Paul Lee
  */
 public class Location {
+    
     //Instance variables
     private List<Room> rooms;
     private String name;

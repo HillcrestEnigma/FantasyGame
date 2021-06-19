@@ -5,6 +5,7 @@
  * @author Jing Sun & Paul Lee
  */
 public class Entity {
+    
     //Instance variables
     private Position position;
     private String name;

@@ -5,9 +5,11 @@
  * @author Jing Sun @ Paul Lee
  */
 public class Item {
+    
     //Instance variables
     private String name;
     public int quantity;
+    
     /**
      * Item constructor
      * 

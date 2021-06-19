@@ -6,6 +6,7 @@ import java.util.*;
  * @author Jing Sun & Paul Lee
  */
 public class Stock implements Asynchronous {
+    
     //Instance variables
     private String ticker;
     private int price;
@@ -62,7 +63,12 @@ public class Stock implements Asynchronous {
     public int getPrice() {
         return price;
     }
-
+    
+    /**
+     * Returns location of stock
+     * 
+     * @return 
+     */
     public String getAsynchronousLocationContext() {
         return "stockexchange";
     }

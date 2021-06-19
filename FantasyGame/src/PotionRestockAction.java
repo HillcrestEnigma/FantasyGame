@@ -22,6 +22,9 @@ public class PotionRestockAction extends Action {
      */
     @Override
     public void perform(Player player, Location location) {
+        
+        //Checks if the player has the max amount of potions and if not,
+        //restocks it
         if (player.inventory.getItem("Potion") != null && player.inventory.getItem("Potion").quantity > 4) {
             System.out.println("Not restocking potions: You already have 5 or more!");
         } else {

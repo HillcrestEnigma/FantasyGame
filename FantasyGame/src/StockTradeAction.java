@@ -6,6 +6,7 @@ import java.util.*;
  * @author Jing Sun & Paul Lee
  */
 public class StockTradeAction extends Action {
+    
     //Instance variables
     private List<Stock> stocks;
     

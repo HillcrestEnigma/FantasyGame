@@ -5,6 +5,7 @@
  * @author Jing Sun & Paul Lee
  */
 public class StockExchange extends Location {
+    
     /**
      * StockExchange constructor
      */

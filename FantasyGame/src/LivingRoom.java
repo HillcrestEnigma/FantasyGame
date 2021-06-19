@@ -5,6 +5,7 @@
  * @author Jing Sun & Paul Lee
  */
 class LivingRoom extends Room {
+    
     /**
      * Constructs a DarkRoom
      * 

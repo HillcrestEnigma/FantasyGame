@@ -21,16 +21,23 @@ public class MiningAction extends Action {
      */
     @Override
     public void perform(Player player, Location location) {
+        
+        //Variables
         Random rng = new Random();
-        System.out.print("You survey the area for valuables, and there is ");
         List<Item> items = new ArrayList<Item>();
         int quantity = 0;
         int chunkQuantity = 0;
         boolean empty = true;
+        
+        //Adds gold and gold chunks in the room to the items ArrayList
+        System.out.print("You survey the area for valuables, and there is ");
         for (Item item:player.getRoom(location).inventory.getItems()) {
             if (item.getName().equals("Gold") ||
                     item.getName().equals("Gold Chunk")) items.add(item);
         }
+        
+        //Checks whether there's gold or gold chunks in the room and if so
+        //prints the gold/gold chunks and their quantity
         if (items.size() > 0) {
             for (int i=0; i<items.size(); i++) {
                 if (i > 0) System.out.print(", ");
@@ -42,6 +49,8 @@ public class MiningAction extends Action {
             }
         } else System.out.print("nothing");
         System.out.println(" in the room.");
+        
+        //The actual action of mining, which takes time
         if (items.size() != 0) {
             System.out.print("You start mining...");
             int ore = rng.nextInt(quantity);
@@ -62,6 +71,8 @@ public class MiningAction extends Action {
                 catch (Exception e) {}
             }
         }
+        
+        //Clears the room if there are no more gold and gold chunks in the room
         if (empty) player.getRoom(location).inventory.clear();
     }
 }

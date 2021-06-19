@@ -5,6 +5,7 @@
  * @author Jing Sun & Paul Lee
  */
 public class Action {
+    
     //Instance variables
     private String command;
     private String description;

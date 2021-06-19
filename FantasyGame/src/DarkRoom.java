@@ -6,6 +6,7 @@ import java.util.Random; // https://www.tutorialspoint.com/java/util/java_util_r
  * @author Jing Sun & Paul Lee
  */
 class DarkRoom extends Room {
+    
     //Instance variables
     private boolean radioactive;
     private boolean lootedByRivalElf = false;
