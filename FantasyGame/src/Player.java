@@ -7,6 +7,15 @@ import java.util.*;
  */
 public class Player extends Entity {
     
+    //Instance variables
+    private boolean enteredCastle = false;
+    private boolean enteredHome = false;
+    private boolean enteredStockExchange = false;
+    private boolean enteredMine = false;
+    private boolean healed = false;
+    private boolean mined = false;
+    private boolean tradedStock = false;
+    
     /**
      * Player constructor
      * 
