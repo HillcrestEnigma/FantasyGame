@@ -32,15 +32,18 @@ public class StockTradeAction extends Action {
         System.out.println("Welcome to the Stock Exchange!");
         System.out.println("Please view a list of commands available for this broker by typing \"help\".");
         
+        // Initialize Scanner
         Scanner scanner = new Scanner(System.in);
         String command, ticker;
 
         while (true) {
+            // Display the new prompt for the stock broker
             System.out.print("\n[StockBroker]> ");
             command = scanner.nextLine();
             System.out.println();
 
             if (command.equals("help")) {
+                // Display help message
                 System.out.println("===== Help =====");
                 System.out.println("help: View this very helpful help message");
                 System.out.println("exit: Exit the stock broker and return to the main game");
@@ -49,8 +52,10 @@ public class StockTradeAction extends Action {
                 System.out.println("buy: Buy a stock");
                 System.out.println("sell: Sell a stock");
             } else if (command.equals("exit")) {
+                // Exit the stock broker
                 break;
             } else if (command.equals("portfolio")) {
+                // Display your portfolio
                 int numStockTypesOwned = 0;
                 int total = 0;
                 System.out.println("Ticker\tQuantity\tValue");
@@ -67,6 +72,7 @@ public class StockTradeAction extends Action {
                 else System.out.println("You do not own any shares at this time.");
                 System.out.println("\nAll prices are in gold.");
             } else if (command.equals("prices")) {
+                // Display stock prices
                 System.out.println("Ticker: Price");
                 System.out.println("=============");
                 for (Stock stock:stocks) {
@@ -75,12 +81,15 @@ public class StockTradeAction extends Action {
                 System.out.println("\nAll prices are in gold.");
                 System.out.println("\nNote: Prices are not updated when the automated stock broker is in use.");
             } else if (command.equals("buy")) {
+                // Buy stocks
                 System.out.print("Please enter the ticker of the stock you wish to purchase: ");
                 ticker = scanner.nextLine();
+                // Find stock ticker
                 for (int i=0; i<stocks.size()+1; i++) {
                     if (i == stocks.size()) {
                         System.out.println("\nTicker not found!");
                     } else if (stocks.get(i).getTicker().equals(ticker)) {
+                        // With the correct stock object, update the player inventory to include the stock with equivalent gold subtracted
                         System.out.print("\nBuying one share of " + ticker + "... ");
                         boolean successful = player.inventory.updateItemQuantity("Gold", -stocks.get(i).getPrice());
                         if (successful) {
@@ -91,15 +100,19 @@ public class StockTradeAction extends Action {
                     }
                 }
             } else if (command.equals("sell")) {
+                // Sell stocks
                 System.out.print("Please enter the ticker of the stock you wish to sell: ");
                 ticker = scanner.nextLine();
+                // Find stock ticker
                 for (int i=0; i<stocks.size()+1; i++) {
                     if (i == stocks.size()) {
                         System.out.println("\nTicker not found!");
                     } else if (stocks.get(i).getTicker().equals(ticker)) {
+                        // With the correct stock object, update the player inventory to include the equivalent amount of gold added and one less of the chosen stock
                         System.out.print("\nSelling one share of " + ticker + "... ");
                         boolean successful = player.inventory.updateItemQuantity(ticker + " Share", -1);
                         if (successful) {
+                            // If Gold isn't in the player's inventory initialize the Gold object inside the inventory
                             if (!player.inventory.updateItemQuantity("Gold", stocks.get(i).getPrice())) {
                                 player.inventory.addItem(new Item("Gold", stocks.get(i).getPrice()));
                             }
@@ -109,6 +122,7 @@ public class StockTradeAction extends Action {
                     }
                 }
             } else {
+                // Wrong command
                 System.out.println("Wrong command. Type \"help\" to view a list of commands for this broker.");
             }
         }
