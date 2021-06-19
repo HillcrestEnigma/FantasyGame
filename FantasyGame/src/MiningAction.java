@@ -50,6 +50,7 @@ public class MiningAction extends Action {
                     Thread.sleep(5000);
                     player.inventory.addItem(new Item("Gold Chunk"));
                     player.getRoom(location).inventory.updateItemQuantity("Gold Chunk", -1);
+                    System.out.println("And find a gold chunk!");
                 }
                 catch (Exception e) {}
             }
@@ -58,6 +59,7 @@ public class MiningAction extends Action {
                     Thread.sleep(1000);
                     player.inventory.addItem(new Item("Gold"));
                     player.getRoom(location).inventory.updateItemQuantity("Gold", -1);
+                    System.out.println("and get a piece of gold.");
                 }
                 catch (Exception e) {}
             }
