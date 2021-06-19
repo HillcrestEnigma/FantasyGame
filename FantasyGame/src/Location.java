@@ -71,9 +71,9 @@ public class Location {
         int maxY = Integer.MIN_VALUE;
         for (Room room:rooms) {
             if (maxX < room.position.getRoomX()) maxX = room.position.getRoomX();
-            else if (minX > room.position.getRoomX()) minX = room.position.getRoomX();
+            if (minX > room.position.getRoomX()) minX = room.position.getRoomX();
             if (maxY < room.position.getRoomY()) maxY = room.position.getRoomY();
-            else if (minY > room.position.getRoomY()) minY = room.position.getRoomY();
+            if (minY > room.position.getRoomY()) minY = room.position.getRoomY();
         }
         char[][] map = new char[maxY-minY+1][maxX-minX+1];
         for (int i = 0; i < maxY-minY+1; i++) {
@@ -86,13 +86,16 @@ public class Location {
         }
         map[0-minY][0-minX] = 'E';
         map[y-minY][x-minX] = 'O';
-        System.out.println("===== Map =====");
+        for (int i = 0; i < map[0].length + 2; i++) System.out.print("-");
+        System.out.println();
         for(int i = 0; i < map.length; i++) {
+            System.out.print('|');
             for(int j = 0; j < map[0].length; j++) {
                 System.out.print(map[i][j]);
             }
-            System.out.println();
+            System.out.println('|');
         }
+        for (int i = 0; i < map[0].length + 2; i++) System.out.print("-");
         System.out.println("\nx = Rooms\nO = Your Location\nE = Entrance");
     }
 
