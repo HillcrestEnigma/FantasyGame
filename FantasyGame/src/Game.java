@@ -99,7 +99,7 @@ public class Game {
             asyncLastUpdate = System.currentTimeMillis();
             for (int i=0; i < timeDeltaSinceAsyncLastUpdate / 500L; i++) {
                 for (Asynchronous async:asyncList) {
-                    result = async.tick(player, location);
+                    result = async.tick(player, getLocationByName(async.getAsynchronousLocationContext()));
                     if (result != null) System.out.println("\n" + result);
                 }
             }
@@ -122,6 +122,7 @@ public class Game {
                 System.out.println("goto home: Teleports you to your home");
                 System.out.println("goto castle: Teleports you to the castle");
                 System.out.println("goto stockexchange: Teleports you to the stock exchange");
+                System.out.println("drink potion: Drink a potion from your inventory");
 
                 if (player.roomActionExists(location)) {
                     System.out.println();
@@ -153,6 +154,8 @@ public class Game {
                 player.teleport(location, getLocationByName("castle"), true);
             } else if (command.equals("goto stockexchange")) {
                 player.teleport(location, getLocationByName("stockexchange"), true);
+            } else if (command.equals("drink potion")) {
+                player.drinkPotion(true);
             } else {
                 if (!player.executeAction(location, command)) System.out.println("Wrong command. Type \"help\" to view a list of commands.");
             }

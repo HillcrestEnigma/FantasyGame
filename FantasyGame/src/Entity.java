@@ -201,11 +201,17 @@ public class Entity {
      *
      * @return
      */
-    public boolean drinkPotion() {
-        if (!inventory.updateItemQuantity("Potion", -1) || health == 100) return false;
-        else {
-            health = Math.min(100, health + 10);
-            return true;
+    public boolean drinkPotion(boolean verbose) {
+        if (health == 100) {
+            if (verbose) System.out.println("Your health is full!");
+            return false;
         }
+        if (!inventory.updateItemQuantity("Potion", -1)) {
+            if (verbose) System.out.println("You don't have any potions!");
+            return false;
+        }
+        health = Math.min(100, health + 10);
+        System.out.println("Your health has been restored to " + health + "%!");
+        return true;
     }
 }

@@ -22,10 +22,12 @@ public class PotionRestockAction extends Action {
      */
     @Override
     public void perform(Player player, Location location) {
-        if (player.inventory.getItem("Potion").quantity > 4) {
+        if (player.inventory.getItem("Potion") != null && player.inventory.getItem("Potion").quantity > 4) {
             System.out.println("Not restocking potions: You already have 5 or more!");
         } else {
-            player.inventory.setItemQuantity("Potion", 5);
+            if (!player.inventory.setItemQuantity("Potion", 5)) {
+                player.inventory.addItem(new Item("Potion", 5));
+            }
             System.out.println("Restocked on potion!");
         };
     }

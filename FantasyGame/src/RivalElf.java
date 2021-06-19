@@ -53,19 +53,21 @@ public class RivalElf extends Entity implements Asynchronous {
         }
 
         if (getHealth() == 25) {
-            if (!drinkPotion()) {
+            if (!drinkPotion(false)) {
                 exitedCastle = true;
-                return "You find the elf again.\n"
+                if (player.getPosition().getLocation().equals("castle")) return "You find the elf again.\n"
                     + "\"You are quite a lucky one to have me run out of potions.\",\n"
                     + "the elf says, before teleporting out of the castle.";
+                else return null;
             }
         }
 
         if (noGoldStreak > 19) {
             exitedCastle = true;
-            return "You find the elf again.\n"
+            if (player.getPosition().getLocation().equals("castle")) return "You find the elf again.\n"
                 + "\"I think I've looted everything in this castle, so see you later!\",\n"
                 + "the elf says, before teleporting out of the castle.";
+            else return null;
         }
 
         if (rng.nextInt(5) == 0) {
@@ -82,9 +84,7 @@ public class RivalElf extends Entity implements Asynchronous {
             }
         }
 
-        if (rng.nextInt(100) == 0) {
-            return "You hear a sinister laughter in the distance, somewhere in the castle.";
-        }
+        if (rng.nextInt(100) == 0 && player.getPosition().getLocation().equals("castle")) return "You hear a sinister laughter in the distance, somewhere in the castle.";
         return null;
     }
     
@@ -113,5 +113,9 @@ public class RivalElf extends Entity implements Asynchronous {
     public void pickUpItems(Location location) {
         List<Item> items = getRoom(location).inventory.getItems();
         inventory.expand(getRoom(location).inventory);
+    }
+
+    public String getAsynchronousLocationContext() {
+        return "castle";
     }
 }
