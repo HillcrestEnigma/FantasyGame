@@ -32,12 +32,29 @@ public class StockTradeAction extends Action {
                 System.out.println("sell: Sell a stock");
             } else if (command.equals("exit")) {
                 break;
+            } else if (command.equals("portfolio")) {
+                int numStockTypesOwned = 0;
+                int total = 0;
+                System.out.println("Ticker\tQuantity\tValue");
+                System.out.println("=============================");
+                for (Stock stock:stocks) {
+                    Item share = player.inventory.getItem(stock.getTicker() + " Share");
+                    if (share != null) {
+                        numStockTypesOwned++;
+                        System.out.println(stock.getTicker() + "\t" + share.quantity + "\t\t" + stock.getPrice() * share.quantity);
+                        total += stock.getPrice() * share.quantity;
+                    }
+                }
+                if (numStockTypesOwned > 0) System.out.println("\nTotal: " + total + " Gold");
+                else System.out.println("You do not own any shares at this time.");
+                System.out.println("\nAll prices are in gold.");
             } else if (command.equals("prices")) {
-                System.out.println("Ticker: Price (Gold)");
-                System.out.println("====================");
+                System.out.println("Ticker: Price");
+                System.out.println("=============");
                 for (Stock stock:stocks) {
                     System.out.println(stock.getTicker() + ": " + stock.getPrice());
                 }
+                System.out.println("\nAll prices are in gold.");
                 System.out.println("\nNote: Prices are not updated when the automated stock broker is in use.");
             } else if (command.equals("buy")) {
                 System.out.print("Please enter the ticker of the stock you wish to purchase: ");
@@ -52,6 +69,22 @@ public class StockTradeAction extends Action {
                             player.inventory.addItem(new Item(ticker + " Share"));
                             System.out.println("Successful!");
                         } else System.out.println("Not enough gold.");
+                        break;
+                    }
+                }
+            } else if (command.equals("sell")) {
+                System.out.print("Please enter the ticker of the stock you wish to sell: ");
+                ticker = scanner.nextLine();
+                for (int i=0; i<stocks.size()+1; i++) {
+                    if (i == stocks.size()) {
+                        System.out.println("\nTicker not found!");
+                    } else if (stocks.get(i).getTicker().equals(ticker)) {
+                        System.out.print("\nSelling one share of " + ticker + "... ");
+                        boolean successful = player.inventory.updateItemQuantity(ticker + " Share", -1);
+                        if (successful) {
+                            player.inventory.updateItemQuantity("Gold", stocks.get(i).getPrice());
+                            System.out.println("Successful!");
+                        } else System.out.println("You do not own a share of " + ticker + ".");
                         break;
                     }
                 }
