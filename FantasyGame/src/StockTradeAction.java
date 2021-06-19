@@ -95,6 +95,14 @@ public class StockTradeAction extends Action {
                         if (successful) {
                             player.inventory.addItem(new Item(ticker + " Share"));
                             System.out.println("Successful!");
+                            if (!player.tradedStock) {
+                                System.out.println();
+                                System.out.println("This is the first stock you've ever bought. You brought out your");
+                                System.out.println("lucky necklace for this occasion. If this stock crashes, you'll probably");
+                                System.out.println("never get your dream house.");
+                                System.out.println();
+                                player.tradedStock = true;
+                            }
                         } else System.out.println("Not enough gold.");
                         break;
                     }

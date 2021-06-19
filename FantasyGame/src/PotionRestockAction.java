@@ -31,7 +31,7 @@ public class PotionRestockAction extends Action {
             if (!player.inventory.setItemQuantity("Potion", 5)) {
                 player.inventory.addItem(new Item("Potion", 5));
             }
-            System.out.println("Restocked on potion!");
+            System.out.println("Restocked on potions!");
         };
     }
 }

@@ -85,6 +85,8 @@ public class Game {
         System.out.println("he left all the gold in his castle to you. You need");
         System.out.println("1000 gold to pay for a new home, so you decide to");
         System.out.println("search his castle, and are currently in a dark room.");
+        System.out.println("You've heard some rooms are radioactive. That doesn't");
+        System.out.println("seem fun.");
         System.out.println();
         
         //The player enters the room
@@ -182,7 +184,6 @@ public class Game {
                 System.out.println("Moving...\n");
                 if (!player.moveBehind(location)) System.out.println("You can't enter the room behind!");
             } else if (command.equals("goto home")) {
-                player.teleport(location, getLocationByName("home"), true);
                 if (!player.enteredHome) {
                     System.out.println("You return to your parents' home to restock on some potions.");
                     System.out.println("You hope to move out someday, when you can pay the down payment");
@@ -190,19 +191,19 @@ public class Game {
                     player.enteredHome = true;
                 }
                 else System.out.println("You return to your parents' home.");
+                player.teleport(location, getLocationByName("home"), true);
             } else if (command.equals("goto castle")) {
-                player.teleport(location, getLocationByName("castle"), true);
                 System.out.println("You go back to the castle. Maybe there's more gold there?");
+                player.teleport(location, getLocationByName("castle"), true);
             } else if (command.equals("goto stockexchange")) {
-                player.teleport(location, getLocationByName("stockexchange"), true);
                 if (!player.enteredStockExchange) {
                     System.out.println("You go to the stock exchange. Your friend became broke here,");
                     System.out.println("but maybe you can get rich here instead with some smart investments.");
                     player.enteredStockExchange = true;
                 }
                 else System.out.println("You go to the stock exchange.");
+                player.teleport(location, getLocationByName("stockexchange"), true);
             } else if (command.equals("goto mine")) {
-                player.teleport(location, getLocationByName("mine"), true);
                 if (!player.enteredMine) {
                     System.out.println("Both your parents and your friend used to work here. Your parents have");
                     System.out.println("retired, and your friend was laid off after he caught stealing. Normally");
@@ -211,9 +212,10 @@ public class Game {
                     player.enteredMine = true;
                 }
                 else {
-                    System.out.println("You go to mine for some more gold. Looks like the security guard isn't");
+                    System.out.println("You go to the mine for some more gold. Looks like the security guard isn't");
                     System.out.println("too happy though. Maybe some more gold will do the trick?");
                 }
+                player.teleport(location, getLocationByName("mine"), true);
                 
             } else if (command.equals("drink potion")) {
                 player.drinkPotion(true);

@@ -28,7 +28,6 @@ public class MiningAction extends Action {
         int quantity = 0;
         int chunkQuantity = 0;
         boolean empty = true;
-        
         //Adds gold and gold chunks in the room to the items ArrayList
         System.out.print("You survey the area for valuables, and there is ");
         for (Item item:player.getRoom(location).inventory.getItems()) {
@@ -42,13 +41,22 @@ public class MiningAction extends Action {
             for (int i=0; i<items.size(); i++) {
                 if (i > 0) System.out.print(", ");
                 System.out.print(items.get(i).quantity + " " + items.get(i).getName());
-                quantity += items.get(i).quantity;
+                quantity += items.get(i).quantity / 10 + 1;
                 if (items.get(i).getName().equals("Gold Chunk")) 
                     chunkQuantity = items.get(i).quantity;
                 if (items.get(i).quantity != 0) empty = false;
             }
         } else System.out.print("nothing");
         System.out.println(" in the room.");
+        
+        //Checks if the player has mined before, and displays a custom message if
+        //they haven't
+        if (!player.mined) {
+            System.out.println("You wield a pickaxe for the first time, and are a bit nervous,");
+            System.out.println("but you strike down on the gold.");
+            System.out.println();
+            player.mined = true;
+        }
         
         //The actual action of mining, which takes time
         if (items.size() != 0) {

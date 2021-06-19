@@ -143,22 +143,6 @@ public class Player extends Entity {
         for (Action action:getRoom(location).getActions()) {
             if (action.getCommand().equals(command)) {
                 action.perform(this, location);
-                if (action.getCommand().equals("mine"))
-                    if (!mined) {
-                    System.out.println("You wield a pickaxe for the first time, and are a bit nervous,");
-                    System.out.println("but you strike down on the gold.");
-                    System.out.println();
-                    mined = true;
-                }
-                if (action.getCommand().equals("trade"))
-                    if (!tradedStock) {
-                    System.out.println("This is the first stock you've ever bought. You brought out your");
-                    System.out.println("lucky necklace for this occasion. If this stock crashes, you'll probably");
-                    System.out.println("never get your dream house.");
-                    System.out.println();
-                    tradedStock = true;
-                }
-                return true;
             }
         }
         return false;
