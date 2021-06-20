@@ -35,7 +35,7 @@ class DarkRoom extends Room {
         this(x, y, 10, false);
         Random rng = new Random(seed);
         inventory.addItem(new Item("Gold", rng.nextInt(10)));
-        radioactive = rng.nextInt(100) < 10;
+        radioactive = rng.nextInt(100) < 25;
     }
 	
     /**
@@ -46,7 +46,7 @@ class DarkRoom extends Room {
     @Override
     public boolean enter(Entity entity, Location location, boolean verbose) {
         if (radioactive) {
-            entity.takeDamage(5, location);
+            entity.takeDamage(10, location);
             if (verbose) System.out.println("You feel the radioactivity in the room. You take 5% health damage. Your new health level is " + entity.getHealth() + "%.\n");
         }
         return true;
