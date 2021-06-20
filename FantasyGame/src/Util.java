@@ -18,6 +18,7 @@ public class Util {
         String result = "";
         if (items.size() == 0) return result;
         else result = items.get(0);
+        if (items.size() == 1) return result;
         for (int i=1; i<items.size()-1; i++) {
             result += ", " + items.get(i);
         }
