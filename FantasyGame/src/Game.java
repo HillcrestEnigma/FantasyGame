@@ -86,7 +86,8 @@ public class Game {
         System.out.println("1000 gold to pay for a new home, so you decide to");
         System.out.println("search his castle, and are currently in a dark room.");
         System.out.println("You've heard some rooms are radioactive. That doesn't");
-        System.out.println("seem fun.");
+        System.out.println("seem fun. Make sure to keep yourself above 25% health,");
+        System.out.println("or else you will not be able to exit the castle!");
         System.out.println();
         
         //The player enters the room
@@ -248,7 +249,6 @@ public class Game {
                     System.out.println("but you immediately feel better. You gain 10 health.");
                     player.healed = true;
                 }
-                else System.out.println("You heal for 10 health.");
             } else {
                 if (!player.executeAction(location, command)) System.out.println("Wrong command. Type \"help\" to view a list of commands.");
             }
