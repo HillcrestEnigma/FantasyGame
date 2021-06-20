@@ -99,14 +99,38 @@ public class Game {
             //Checks if the player won
             if (player.inventory.getItem("Gold") != null 
                     && player.inventory.getItem("Gold").quantity >= 1000) {
-                System.out.println("You beat the game!");
+                System.out.println("You beat the game! You'll finally get the dream house you wanted.");
+                System.out.println("Who's that?");
+                System.out.println("Rival Elf: Hey, mind if you spare me some gold?");
+                System.out.println("You: Sorry, I need to get a house for myself.");
+                System.out.println("Rival Elf: So you're just gonna leave me on the streets?");
+                System.out.println("You: I don't know, I guess we can be roommates.");
+                System.out.println("Your former friend thinks for a bit.");
+                try {
+                    Thread.sleep(1000);
+                }
+                catch (Exception e) {}
+                System.out.println("Rival Elf: Sure, I guess that sounds nice.");
+                System.out.println("THE END");
                 return;
             }
             else if (player.inventory.getItem("Gold") != null 
                     && player.inventory.getItem("Gold Chunk") != null
                     && player.inventory.getItem("Gold").quantity 
                     + player.inventory.getItem("Gold Chunk").quantity * 10 >= 1000) {
-                System.out.println("You beat the game!");
+                System.out.println("You beat the game! You'll finally get the dream house you wanted.");
+                System.out.println("Who's that?");
+                System.out.println("Rival Elf: Hey, mind if you spare me some gold?");
+                System.out.println("You: Sorry, I need to get a house for myself.");
+                System.out.println("Rival Elf: So you're just gonna leave me on the streets?");
+                System.out.println("You: I don't know, I guess we can be roommates.");
+                System.out.println("Your former friend thinks for a bit.");
+                try {
+                    Thread.sleep(1000);
+                }
+                catch (Exception e) {}
+                System.out.println("Rival Elf: Sure, I guess that sounds nice.");
+                System.out.println("THE END");
                 return;
             }
             
