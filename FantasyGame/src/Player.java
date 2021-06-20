@@ -143,6 +143,7 @@ public class Player extends Entity {
         for (Action action:getRoom(location).getActions()) {
             if (action.getCommand().equals(command)) {
                 action.perform(this, location);
+                return true;
             }
         }
         return false;
