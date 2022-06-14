@@ -35,6 +35,7 @@ public class RivalElf extends Entity implements Asynchronous {
     public String tick(Player player, Location location) {
         if (exitedCastle) return null;
         if (!isAlive) return null;
+        if (introducedItself && rng.nextInt(100) == 0 && player.getPosition().getLocation().equals("castle")) return "You hear a sinister laughter in the distance, somewhere in the castle.";
         if (!introducedItself && player.getPosition().equals(this.getPosition())) {
             introducedItself = true;
             return "As you look around, you see another elf looking for gold.\n"
@@ -83,8 +84,7 @@ public class RivalElf extends Entity implements Asynchronous {
                 if (room.inventory.size() == 0) noGoldStreak++;
             }
         }
-
-        if (rng.nextInt(100) == 0 && player.getPosition().getLocation().equals("castle")) return "You hear a sinister laughter in the distance, somewhere in the castle.";
+        
         return null;
     }
     
